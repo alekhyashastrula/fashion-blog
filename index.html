@@ -35,45 +35,81 @@
         </div>
     </header>
 
-    <!-- Shop Section -->
     <!-- Shipping Notice -->
     <div class="shipping-banner">
         <p>Free shipping across India | International orders (US & worldwide) — shipping charges apply</p>
     </div>
 
+    <!-- Shop Section -->
     <section id="shop" class="section">
         <h2 class="section-title">Our Mul Cotton Sarees</h2>
         <p class="shop-subtitle">Pichwai print on pure mul cotton — customise the colour as per your choice</p>
         <div class="shop-grid">
 
-            <div class="product-card" data-id="1" data-name="Pichwai Print — Ink Blue" data-price="4000">
-                <div class="product-slider">
-                    <div class="slider-track" id="slider-1">
-                        <div class="slide"><img src="images/pichwai-ink-blue-1.png" alt="Pichwai Print Ink Blue — Full Saree View"></div>
-                        <div class="slide"><img src="images/pichwai-ink-blue-2.png" alt="Pichwai Print Ink Blue — Pallu Detail"></div>
-                        <div class="slide"><img src="images/pichwai-ink-blue-3.png" alt="Pichwai Print Ink Blue — Drape View"></div>
-                    </div>
-                    <button class="slider-btn slider-prev" onclick="slideProduct(1, -1)">&#8249;</button>
-                    <button class="slider-btn slider-next" onclick="slideProduct(1, 1)">&#8250;</button>
-                    <div class="slider-dots" id="dots-1">
-                        <span class="dot active" onclick="goToSlide(1, 0)"></span>
-                        <span class="dot" onclick="goToSlide(1, 1)"></span>
-                        <span class="dot" onclick="goToSlide(1, 2)"></span>
-                    </div>
+            <div class="product-card" onclick="openProduct(1)">
+                <div class="product-thumb">
+                    <img src="images/pichwai-ink-blue-1.png" alt="Pichwai Print — Ink Blue">
                     <span class="product-tag">Bestseller</span>
                 </div>
                 <div class="product-info">
                     <h3>Pichwai Print — Ink Blue</h3>
-                    <p class="product-desc">Stunning pichwai print on pure mul cotton in rich ink blue. Traditional temple art motifs with golden yellow border. Colour can be customised on request.</p>
-                    <div class="product-footer">
-                        <span class="product-price">&#8377;4,000</span>
-                        <button class="btn-cart" onclick="addToCart(1, 'Pichwai Print — Ink Blue', 4000)">Add to Cart</button>
-                    </div>
+                    <p class="product-price">&#8377;4,000</p>
+                    <p class="product-hint">Tap to view all images</p>
                 </div>
             </div>
 
         </div>
     </section>
+
+    <!-- Product Detail Page (Amazon-style) -->
+    <div class="pdp-overlay" id="pdpOverlay">
+        <div class="pdp-page">
+            <button class="pdp-back" onclick="closeProduct()">&larr; Back to Shop</button>
+
+            <div class="pdp-content">
+                <!-- Left: Images -->
+                <div class="pdp-gallery">
+                    <div class="pdp-main-image">
+                        <img id="pdpMainImg" src="images/pichwai-ink-blue-1.png" alt="Pichwai Print — Ink Blue">
+                        <button class="pdp-nav pdp-nav-prev" onclick="pdpSlide(-1)">&#8249;</button>
+                        <button class="pdp-nav pdp-nav-next" onclick="pdpSlide(1)">&#8250;</button>
+                    </div>
+                    <div class="pdp-thumbnails" id="pdpThumbnails">
+                        <img src="images/pichwai-ink-blue-1.png" alt="View 1" class="pdp-thumb active" onclick="pdpSelectImage(0)">
+                        <img src="images/pichwai-ink-blue-2.png" alt="View 2" class="pdp-thumb" onclick="pdpSelectImage(1)">
+                        <img src="images/pichwai-ink-blue-3.png" alt="View 3" class="pdp-thumb" onclick="pdpSelectImage(2)">
+                    </div>
+                </div>
+
+                <!-- Right: Product Info -->
+                <div class="pdp-details">
+                    <h1 class="pdp-title">Pichwai Print — Ink Blue</h1>
+                    <p class="pdp-price">&#8377;4,000</p>
+                    <div class="pdp-badge">Mul Cotton | Handcrafted</div>
+
+                    <div class="pdp-description">
+                        <h3>Product Details</h3>
+                        <ul>
+                            <li><strong>Fabric:</strong> Pure Mul Cotton</li>
+                            <li><strong>Print:</strong> Pichwai (Traditional temple art)</li>
+                            <li><strong>Colour:</strong> Ink Blue with golden yellow border</li>
+                            <li><strong>Blouse:</strong> Matching blouse piece included</li>
+                            <li><strong>Length:</strong> 5.5 meters (saree) + 0.8 meters (blouse)</li>
+                            <li><strong>Care:</strong> Gentle hand wash or dry clean</li>
+                        </ul>
+                        <p class="pdp-custom-note">Colour can be customised on request — contact us before ordering.</p>
+                    </div>
+
+                    <div class="pdp-shipping">
+                        <p>&#10003; Free shipping across India</p>
+                        <p>&#9992; International shipping charges apply</p>
+                    </div>
+
+                    <button class="btn-cart btn-cart-large" onclick="addToCart(1, 'Pichwai Print — Ink Blue', 4000)">Add to Cart — &#8377;4,000</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Cart Sidebar -->
     <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
@@ -161,34 +197,58 @@
     </footer>
 
     <script>
-        // Image Slider
-        const sliderState = {};
+        // ===== Product Detail Page =====
+        const pdpImages = [
+            'images/pichwai-ink-blue-1.png',
+            'images/pichwai-ink-blue-2.png',
+            'images/pichwai-ink-blue-3.png'
+        ];
+        let pdpIndex = 0;
 
-        function slideProduct(id, direction) {
-            const track = document.getElementById('slider-' + id);
-            const slides = track.querySelectorAll('.slide');
-            const total = slides.length;
-            if (!sliderState[id]) sliderState[id] = 0;
-            sliderState[id] = (sliderState[id] + direction + total) % total;
-            track.style.transform = 'translateX(-' + (sliderState[id] * 100) + '%)';
-            updateDots(id);
+        function openProduct(id) {
+            document.getElementById('pdpOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            pdpIndex = 0;
+            pdpUpdateMain();
         }
 
-        function goToSlide(id, index) {
-            const track = document.getElementById('slider-' + id);
-            sliderState[id] = index;
-            track.style.transform = 'translateX(-' + (index * 100) + '%)';
-            updateDots(id);
+        function closeProduct() {
+            document.getElementById('pdpOverlay').classList.remove('open');
+            document.body.style.overflow = '';
         }
 
-        function updateDots(id) {
-            const dots = document.getElementById('dots-' + id).querySelectorAll('.dot');
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === sliderState[id]);
+        function pdpSlide(dir) {
+            pdpIndex = (pdpIndex + dir + pdpImages.length) % pdpImages.length;
+            pdpUpdateMain();
+        }
+
+        function pdpSelectImage(index) {
+            pdpIndex = index;
+            pdpUpdateMain();
+        }
+
+        function pdpUpdateMain() {
+            document.getElementById('pdpMainImg').src = pdpImages[pdpIndex];
+            const thumbs = document.querySelectorAll('.pdp-thumb');
+            thumbs.forEach((t, i) => t.classList.toggle('active', i === pdpIndex));
+        }
+
+        // Swipe support for mobile
+        let touchStartX = 0;
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainImg = document.querySelector('.pdp-main-image');
+            mainImg.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
             });
-        }
+            mainImg.addEventListener('touchend', (e) => {
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) {
+                    pdpSlide(diff > 0 ? 1 : -1);
+                }
+            });
+        });
 
-        // Cart state
+        // ===== Cart =====
         let cart = [];
 
         function addToCart(id, name, price) {
@@ -199,7 +259,8 @@
                 cart.push({ id, name, price, qty: 1 });
             }
             updateCart();
-            openCartBriefly();
+            closeProduct();
+            toggleCart();
         }
 
         function removeFromCart(id) {
@@ -258,13 +319,6 @@
             document.getElementById('cartOverlay').classList.toggle('open');
         }
 
-        function openCartBriefly() {
-            const sidebar = document.getElementById('cartSidebar');
-            const overlay = document.getElementById('cartOverlay');
-            sidebar.classList.add('open');
-            overlay.classList.add('open');
-        }
-
         function openCheckout() {
             if (cart.length === 0) return;
             toggleCart();
@@ -318,7 +372,6 @@ Please confirm this order by replying to the customer.`
 
             window.location.href = `mailto:alekhyashastrula25@gmail.com?subject=${subject}&body=${body}`;
 
-            // Show confirmation
             setTimeout(() => {
                 alert('Your email app should open with the order details. Please send the email to place your order. We will confirm shortly!');
                 cart = [];
@@ -345,6 +398,14 @@ Please confirm this order by replying to the customer.`
                     navLinks.classList.remove('active');
                 }
             });
+        });
+
+        // Close PDP on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProduct();
+                closeCheckout();
+            }
         });
     </script>
 
