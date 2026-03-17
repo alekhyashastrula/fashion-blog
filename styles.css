@@ -224,12 +224,15 @@ ul {
 }
 
 .product-image {
-    height: 220px;
+    height: 350px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     padding: 1rem;
     position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .product-tag {
