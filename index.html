@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shastrula Studios - Fashion Blog</title>
+    <title>Shastrula Studios — Mul Cotton Sarees</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -15,11 +15,13 @@
             <a href="#" class="logo">Shastrula Studios</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#trending">Collections</a></li>
-                <li><a href="#categories">Categories</a></li>
+                <li><a href="#shop">Shop</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="cart-btn" onclick="toggleCart()" aria-label="Shopping cart">
+                &#128722; <span class="cart-count" id="cartCount">0</span>
+            </button>
             <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
         </div>
     </nav>
@@ -29,122 +31,179 @@
         <div class="hero-overlay">
             <h1>Shastrula Studios</h1>
             <p>Beautiful mul cotton sarees — lightweight, elegant & purely Indian</p>
-            <a href="#trending" class="btn-primary">Explore Our Sarees</a>
+            <a href="#shop" class="btn-primary">Shop Now</a>
         </div>
     </header>
 
-    <!-- Trending Section -->
-    <section id="trending" class="section">
-        <h2 class="section-title">Our Mul Cotton Collection</h2>
-        <div class="blog-grid">
+    <!-- Shop Section -->
+    <section id="shop" class="section">
+        <h2 class="section-title">Our Mul Cotton Sarees</h2>
+        <div class="shop-grid">
 
-            <article class="blog-card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600');">
-                    <span class="card-tag">Bestseller</span>
+            <div class="product-card" data-id="1" data-name="Classic Mul Cotton — Maroon" data-price="599">
+                <div class="product-image" style="background: linear-gradient(135deg, #8B1A4A, #C0392B);">
+                    <span class="product-tag">Bestseller</span>
                 </div>
-                <div class="card-content">
-                    <h3>Classic Mul Cotton Sarees</h3>
-                    <p class="card-date">New Arrivals</p>
-                    <p>Our signature mul cotton sarees — ultra-lightweight, breathable, and perfect for everyday elegance. Available in solid colors and subtle prints that drape beautifully for any occasion.</p>
-                    <a href="#" class="read-more">Shop Now &rarr;</a>
+                <div class="product-info">
+                    <h3>Classic Mul Cotton — Maroon</h3>
+                    <p class="product-desc">Pure mul cotton, solid maroon with golden zari border. Lightweight and breathable for everyday wear.</p>
+                    <div class="product-footer">
+                        <span class="product-price">&#8377;599</span>
+                        <button class="btn-cart" onclick="addToCart(1, 'Classic Mul Cotton — Maroon', 599)">Add to Cart</button>
+                    </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="blog-card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=600');">
-                    <span class="card-tag">Printed</span>
+            <div class="product-card" data-id="2" data-name="Block Print — Blue Floral" data-price="749">
+                <div class="product-image" style="background: linear-gradient(135deg, #2C3E8C, #5B7FCA);">
+                    <span class="product-tag">Handcrafted</span>
                 </div>
-                <div class="card-content">
-                    <h3>Block Print Mul Cotton Sarees</h3>
-                    <p class="card-date">Handcrafted</p>
-                    <p>Traditional block printing meets soft mul cotton. Each saree features hand-stamped motifs — florals, paisleys, and geometric patterns — inspired by India's rich textile heritage.</p>
-                    <a href="#" class="read-more">Shop Now &rarr;</a>
+                <div class="product-info">
+                    <h3>Block Print — Blue Floral</h3>
+                    <p class="product-desc">Hand block printed floral motifs on soft mul cotton. Traditional Rajasthani prints in indigo blue.</p>
+                    <div class="product-footer">
+                        <span class="product-price">&#8377;749</span>
+                        <button class="btn-cart" onclick="addToCart(2, 'Block Print — Blue Floral', 749)">Add to Cart</button>
+                    </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="blog-card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=600');">
-                    <span class="card-tag">Zari Border</span>
+            <div class="product-card" data-id="3" data-name="Zari Border — Mustard Yellow" data-price="849">
+                <div class="product-image" style="background: linear-gradient(135deg, #D4A017, #C9A96E);">
+                    <span class="product-tag">Festive</span>
                 </div>
-                <div class="card-content">
-                    <h3>Mul Cotton with Zari Border</h3>
-                    <p class="card-date">Festive Favourites</p>
-                    <p>Add a touch of shimmer to your look with our mul cotton sarees featuring elegant zari borders. Lightweight enough for daily wear, grand enough for pujas and family gatherings.</p>
-                    <a href="#" class="read-more">Shop Now &rarr;</a>
+                <div class="product-info">
+                    <h3>Zari Border — Mustard Yellow</h3>
+                    <p class="product-desc">Elegant mustard mul cotton with rich golden zari border. Perfect for pujas, festivals, and family gatherings.</p>
+                    <div class="product-footer">
+                        <span class="product-price">&#8377;849</span>
+                        <button class="btn-cart" onclick="addToCart(3, 'Zari Border — Mustard Yellow', 849)">Add to Cart</button>
+                    </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="blog-card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1585944672394-5feae0ea3116?w=600');">
-                    <span class="card-tag">Pastel</span>
+            <div class="product-card" data-id="4" data-name="Pastel Mul Cotton — Lavender" data-price="649">
+                <div class="product-image" style="background: linear-gradient(135deg, #9B59B6, #D2B4DE);">
+                    <span class="product-tag">Trending</span>
                 </div>
-                <div class="card-content">
-                    <h3>Pastel Mul Cotton Collection</h3>
-                    <p class="card-date">Trending</p>
-                    <p>Soft pinks, mint greens, lavenders, and powder blues — our pastel mul cotton sarees bring a fresh, modern vibe while keeping the comfort and grace of traditional Indian draping.</p>
-                    <a href="#" class="read-more">Shop Now &rarr;</a>
+                <div class="product-info">
+                    <h3>Pastel Mul Cotton — Lavender</h3>
+                    <p class="product-desc">Soft lavender mul cotton saree with delicate self-print. Modern pastel shade with traditional draping comfort.</p>
+                    <div class="product-footer">
+                        <span class="product-price">&#8377;649</span>
+                        <button class="btn-cart" onclick="addToCart(4, 'Pastel Mul Cotton — Lavender', 649)">Add to Cart</button>
+                    </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="blog-card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1614886137085-5a0e88313fb8?w=600');">
-                    <span class="card-tag">Contrast</span>
+            <div class="product-card" data-id="5" data-name="Contrast Pallu — Teal & Orange" data-price="699">
+                <div class="product-image" style="background: linear-gradient(135deg, #1ABC9C, #E67E22);">
+                    <span class="product-tag">Popular</span>
                 </div>
-                <div class="card-content">
-                    <h3>Contrast Pallu Mul Cotton Sarees</h3>
-                    <p class="card-date">Popular Choice</p>
-                    <p>Make a statement with our contrast pallu collection. Bold pallu colors paired with subtle saree bodies create a striking look that's perfect for office wear and casual outings.</p>
-                    <a href="#" class="read-more">Shop Now &rarr;</a>
+                <div class="product-info">
+                    <h3>Contrast Pallu — Teal & Orange</h3>
+                    <p class="product-desc">Bold teal body with vibrant orange pallu. A stunning contrast combination for office wear and casual outings.</p>
+                    <div class="product-footer">
+                        <span class="product-price">&#8377;699</span>
+                        <button class="btn-cart" onclick="addToCart(5, 'Contrast Pallu — Teal & Orange', 699)">Add to Cart</button>
+                    </div>
                 </div>
-            </article>
+            </div>
 
-            <article class="blog-card">
-                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=600');">
-                    <span class="card-tag">Combo</span>
+            <div class="product-card" data-id="6" data-name="Block Print — Rust Paisley" data-price="779">
+                <div class="product-image" style="background: linear-gradient(135deg, #A0522D, #D4956B);">
+                    <span class="product-tag">New</span>
                 </div>
-                <div class="card-content">
-                    <h3>Mul Cotton Saree Combos</h3>
-                    <p class="card-date">Value Packs</p>
-                    <p>Get more for less with our curated combo packs. Mix and match from our mul cotton range — perfect for gifting or building your everyday saree wardrobe with variety.</p>
-                    <a href="#" class="read-more">Shop Now &rarr;</a>
+                <div class="product-info">
+                    <h3>Block Print — Rust Paisley</h3>
+                    <p class="product-desc">Traditional paisley block print on earthy rust mul cotton. Handcrafted by Indian artisans with natural dyes.</p>
+                    <div class="product-footer">
+                        <span class="product-price">&#8377;779</span>
+                        <button class="btn-cart" onclick="addToCart(6, 'Block Print — Rust Paisley', 779)">Add to Cart</button>
+                    </div>
                 </div>
-            </article>
+            </div>
+
+            <div class="product-card" data-id="7" data-name="Classic Mul Cotton — Bottle Green" data-price="599">
+                <div class="product-image" style="background: linear-gradient(135deg, #1B5E20, #4CAF50);">
+                    <span class="product-tag">Classic</span>
+                </div>
+                <div class="product-info">
+                    <h3>Classic Mul Cotton — Bottle Green</h3>
+                    <p class="product-desc">Deep bottle green pure mul cotton with subtle self-striped texture. Timeless colour for every Indian wardrobe.</p>
+                    <div class="product-footer">
+                        <span class="product-price">&#8377;599</span>
+                        <button class="btn-cart" onclick="addToCart(7, 'Classic Mul Cotton — Bottle Green', 599)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="8" data-name="Pastel Mul Cotton — Baby Pink" data-price="649">
+                <div class="product-image" style="background: linear-gradient(135deg, #E91E63, #F8BBD0);">
+                    <span class="product-tag">Trending</span>
+                </div>
+                <div class="product-info">
+                    <h3>Pastel Mul Cotton — Baby Pink</h3>
+                    <p class="product-desc">Soft baby pink mul cotton with matching blouse piece. Delicate, feminine, and perfect for light festive occasions.</p>
+                    <div class="product-footer">
+                        <span class="product-price">&#8377;649</span>
+                        <button class="btn-cart" onclick="addToCart(8, 'Pastel Mul Cotton — Baby Pink', 649)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="9" data-name="Mul Cotton Combo — Set of 3" data-price="1499">
+                <div class="product-image" style="background: linear-gradient(135deg, #8B1A4A, #C9A96E, #2C3E8C);">
+                    <span class="product-tag">Value Pack</span>
+                </div>
+                <div class="product-info">
+                    <h3>Mul Cotton Combo — Set of 3</h3>
+                    <p class="product-desc">Curated combo of 3 mul cotton sarees — one plain, one printed, one zari border. Perfect gift set or wardrobe starter.</p>
+                    <div class="product-footer">
+                        <span class="product-price">&#8377;1,499</span>
+                        <button class="btn-cart" onclick="addToCart(9, 'Mul Cotton Combo — Set of 3', 1499)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </section>
 
-    <!-- Categories Section -->
-    <section id="categories" class="section categories-section">
-        <h2 class="section-title">Explore Categories</h2>
-        <div class="categories-grid">
-            <div class="category-card">
-                <h3>Plain Mul Cotton</h3>
-                <p>Solid colors, everyday elegance</p>
-            </div>
-            <div class="category-card">
-                <h3>Printed Mul Cotton</h3>
-                <p>Block prints & traditional motifs</p>
-            </div>
-            <div class="category-card">
-                <h3>Zari Border</h3>
-                <p>Festive & puja-ready sarees</p>
-            </div>
-            <div class="category-card">
-                <h3>Combo Packs</h3>
-                <p>Value sets & gift collections</p>
-            </div>
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="cart-close" onclick="toggleCart()">&times;</button>
         </div>
-    </section>
+        <div class="cart-items" id="cartItems">
+            <p class="cart-empty">Your cart is empty</p>
+        </div>
+        <div class="cart-summary" id="cartSummary" style="display:none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">&#8377;0</span>
+            </div>
+            <button class="btn-primary btn-checkout" onclick="openCheckout()">Proceed to Order</button>
+        </div>
+    </aside>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <h2>Stay in Style</h2>
-        <p>Subscribe for new collection launches, festive offers, and exclusive designs.</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-            <input type="email" placeholder="Enter your email" required>
-            <button type="submit" class="btn-primary">Subscribe</button>
-        </form>
-    </section>
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeCheckout()">&times;</button>
+            <h2>Place Your Order</h2>
+            <p class="modal-subtitle">Fill in your details and we'll get back to you to confirm your order.</p>
+            <form id="checkoutForm" onsubmit="submitOrder(event)">
+                <input type="text" name="name" placeholder="Your Full Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <textarea name="address" placeholder="Delivery Address" rows="3" required></textarea>
+                <div class="order-summary" id="orderSummary"></div>
+                <button type="submit" class="btn-primary btn-submit">Send Order via Email</button>
+            </form>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="section about-section">
@@ -166,8 +225,7 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#trending">Collections</a></li>
-                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#shop">Shop</a></li>
                     <li><a href="#about">About</a></li>
                 </ul>
             </div>
@@ -176,7 +234,6 @@
                 <ul>
                     <li><a href="#">Instagram</a></li>
                     <li><a href="#">Pinterest</a></li>
-                    <li><a href="#">Twitter</a></li>
                     <li><a href="#">YouTube</a></li>
                 </ul>
             </div>
@@ -191,6 +248,142 @@
     </footer>
 
     <script>
+        // Cart state
+        let cart = [];
+
+        function addToCart(id, name, price) {
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ id, name, price, qty: 1 });
+            }
+            updateCart();
+            openCartBriefly();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    removeFromCart(id);
+                    return;
+                }
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const countEl = document.getElementById('cartCount');
+            const itemsEl = document.getElementById('cartItems');
+            const summaryEl = document.getElementById('cartSummary');
+            const totalEl = document.getElementById('cartTotal');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            countEl.textContent = totalItems;
+
+            if (cart.length === 0) {
+                itemsEl.innerHTML = '<p class="cart-empty">Your cart is empty</p>';
+                summaryEl.style.display = 'none';
+            } else {
+                itemsEl.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>&#8377;${item.price.toLocaleString('en-IN')} each</p>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button onclick="changeQty(${item.id}, -1)">-</button>
+                            <span>${item.qty}</span>
+                            <button onclick="changeQty(${item.id}, 1)">+</button>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${item.id})">&times;</button>
+                    </div>
+                `).join('');
+                summaryEl.style.display = 'block';
+                totalEl.textContent = '₹' + totalPrice.toLocaleString('en-IN');
+            }
+        }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('open');
+            document.getElementById('cartOverlay').classList.toggle('open');
+        }
+
+        function openCartBriefly() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('cartOverlay');
+            sidebar.classList.add('open');
+            overlay.classList.add('open');
+        }
+
+        function openCheckout() {
+            if (cart.length === 0) return;
+            toggleCart();
+            document.getElementById('checkoutModal').classList.add('open');
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const summaryHtml = cart.map(item =>
+                `<div class="order-item"><span>${item.name} x${item.qty}</span><span>&#8377;${(item.price * item.qty).toLocaleString('en-IN')}</span></div>`
+            ).join('') + `<div class="order-item order-total"><span><strong>Total</strong></span><span><strong>&#8377;${totalPrice.toLocaleString('en-IN')}</strong></span></div>`;
+
+            document.getElementById('orderSummary').innerHTML = summaryHtml;
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.remove('open');
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            const form = e.target;
+            const name = form.name.value;
+            const email = form.email.value;
+            const phone = form.phone.value;
+            const address = form.address.value;
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const itemsList = cart.map(item => `${item.name} x${item.qty} = ₹${(item.price * item.qty).toLocaleString('en-IN')}`).join('\n');
+
+            const subject = encodeURIComponent('New Order — Shastrula Studios');
+            const body = encodeURIComponent(
+`New Order from Shastrula Studios Website
+
+Customer Details:
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Address: ${address}
+
+Order Details:
+${itemsList}
+
+Total: ₹${totalPrice.toLocaleString('en-IN')}
+
+---
+Please confirm this order by replying to the customer.`
+            );
+
+            window.location.href = `mailto:alekhyashastrula25@gmail.com?subject=${subject}&body=${body}`;
+
+            // Show confirmation
+            setTimeout(() => {
+                alert('Your email app should open with the order details. Please send the email to place your order. We will confirm shortly!');
+                cart = [];
+                updateCart();
+                closeCheckout();
+                form.reset();
+            }, 500);
+        }
+
         // Mobile menu toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
