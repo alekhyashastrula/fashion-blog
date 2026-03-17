@@ -47,7 +47,19 @@
         <div class="shop-grid">
 
             <div class="product-card" data-id="1" data-name="Pichwai Print — Ink Blue" data-price="4000">
-                <div class="product-image" style="background-image: url('images/pichwai-ink-blue.jpg'); background-size: cover; background-position: center;">
+                <div class="product-slider">
+                    <div class="slider-track" id="slider-1">
+                        <div class="slide"><img src="images/pichwai-ink-blue-1.png" alt="Pichwai Print Ink Blue — Full Saree View"></div>
+                        <div class="slide"><img src="images/pichwai-ink-blue-2.png" alt="Pichwai Print Ink Blue — Pallu Detail"></div>
+                        <div class="slide"><img src="images/pichwai-ink-blue-3.png" alt="Pichwai Print Ink Blue — Drape View"></div>
+                    </div>
+                    <button class="slider-btn slider-prev" onclick="slideProduct(1, -1)">&#8249;</button>
+                    <button class="slider-btn slider-next" onclick="slideProduct(1, 1)">&#8250;</button>
+                    <div class="slider-dots" id="dots-1">
+                        <span class="dot active" onclick="goToSlide(1, 0)"></span>
+                        <span class="dot" onclick="goToSlide(1, 1)"></span>
+                        <span class="dot" onclick="goToSlide(1, 2)"></span>
+                    </div>
                     <span class="product-tag">Bestseller</span>
                 </div>
                 <div class="product-info">
@@ -149,6 +161,33 @@
     </footer>
 
     <script>
+        // Image Slider
+        const sliderState = {};
+
+        function slideProduct(id, direction) {
+            const track = document.getElementById('slider-' + id);
+            const slides = track.querySelectorAll('.slide');
+            const total = slides.length;
+            if (!sliderState[id]) sliderState[id] = 0;
+            sliderState[id] = (sliderState[id] + direction + total) % total;
+            track.style.transform = 'translateX(-' + (sliderState[id] * 100) + '%)';
+            updateDots(id);
+        }
+
+        function goToSlide(id, index) {
+            const track = document.getElementById('slider-' + id);
+            sliderState[id] = index;
+            track.style.transform = 'translateX(-' + (index * 100) + '%)';
+            updateDots(id);
+        }
+
+        function updateDots(id) {
+            const dots = document.getElementById('dots-' + id).querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === sliderState[id]);
+            });
+        }
+
         // Cart state
         let cart = [];
 
