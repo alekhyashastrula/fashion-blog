@@ -60,7 +60,17 @@ ul {
     letter-spacing: 2px;
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+}
+
+.logo-text {
+    display: flex;
+    align-items: center;
 }
 
 .logo-accent {
