@@ -189,6 +189,36 @@
         </div>
     </div>
 
+    <!-- Payment QR Modal -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal payment-modal">
+            <button class="modal-close" onclick="closePayment()">&times;</button>
+            <h2>Complete Your Payment</h2>
+            <p class="modal-subtitle">Scan the QR code below using any UPI app to pay</p>
+            <div class="qr-wrap">
+                <img src="images/upi-qr.jpg" alt="UPI QR Code" class="qr-img">
+            </div>
+            <p class="payment-amount" id="paymentAmount"></p>
+            <p class="payment-note">After payment, please share the screenshot via email for faster confirmation.</p>
+            <button class="btn-primary btn-submit" onclick="paymentDone()">I've Completed Payment</button>
+        </div>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div class="modal-overlay" id="thankYouModal">
+        <div class="modal thankyou-modal">
+            <div class="thankyou-icon">&#10003;</div>
+            <h2>Thank You for Your Order!</h2>
+            <p class="modal-subtitle">Your order has been received and payment is being verified.</p>
+            <div class="thankyou-details">
+                <p>We'll confirm your order via email within <strong>24 hours</strong>.</p>
+                <p>For faster confirmation, share your payment screenshot to:</p>
+                <a href="mailto:alekhyashastrula25@gmail.com" class="thankyou-email">alekhyashastrula25@gmail.com</a>
+            </div>
+            <button class="btn-primary btn-submit" onclick="closeThankYou()">Continue Shopping</button>
+        </div>
+    </div>
+
     <!-- USP Features Strip -->
     <section class="usp-strip">
         <div class="usp-grid">
@@ -447,6 +477,21 @@
             document.getElementById('checkoutModal').classList.remove('open');
         }
 
+        function closePayment() {
+            document.getElementById('paymentModal').classList.remove('open');
+        }
+
+        function paymentDone() {
+            closePayment();
+            document.getElementById('thankYouModal').classList.add('open');
+            cart = [];
+            updateCart();
+        }
+
+        function closeThankYou() {
+            document.getElementById('thankYouModal').classList.remove('open');
+        }
+
         function submitOrder(e) {
             e.preventDefault();
             const form = e.target;
@@ -484,10 +529,9 @@ Please confirm this order by replying to the customer.`
             window.location.href = `mailto:alekhyashastrula25@gmail.com?subject=${subject}&body=${body}`;
 
             setTimeout(() => {
-                alert('Your email app should open with the order details. Please send the email to place your order. We will confirm shortly!');
-                cart = [];
-                updateCart();
+                document.getElementById('paymentAmount').textContent = 'Amount: ₹' + totalPrice.toLocaleString('en-IN');
                 closeCheckout();
+                document.getElementById('paymentModal').classList.add('open');
                 form.reset();
             }, 500);
         }
@@ -524,7 +568,7 @@ Please confirm this order by replying to the customer.`
 
         // Close on escape
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') { closeLightbox(); closeCheckout(); }
+            if (e.key === 'Escape') { closeLightbox(); closeCheckout(); closePayment(); closeThankYou(); }
             if (e.key === 'ArrowLeft') lbSlide(-1);
             if (e.key === 'ArrowRight') lbSlide(1);
         });

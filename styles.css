@@ -836,6 +836,79 @@ ul {
     background: #6D1238;
 }
 
+/* ===== Payment QR Modal ===== */
+.payment-modal {
+    text-align: center;
+}
+
+.qr-wrap {
+    margin: 1.5rem auto;
+    max-width: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.qr-img {
+    width: 100%;
+    display: block;
+}
+
+.payment-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #8B1A4A;
+    margin-bottom: 0.8rem;
+}
+
+.payment-note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* ===== Thank You Modal ===== */
+.thankyou-modal {
+    text-align: center;
+}
+
+.thankyou-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+}
+
+.thankyou-details {
+    background: #f9f6f2;
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    line-height: 1.8;
+}
+
+.thankyou-details p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 0.3rem;
+}
+
+.thankyou-email {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #8B1A4A;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
 /* ===== About ===== */
 /* ===== USP Features Strip ===== */
 .usp-strip {
