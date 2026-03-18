@@ -455,19 +455,20 @@ ul {
 .btn-cart {
     width: 100%;
     padding: 8px 16px;
-    background: #FFD814;
-    color: #0F1111;
-    border: 1px solid #FCD200;
+    background: linear-gradient(135deg, #e8a4b8, #c9a96e, #e8a4b8);
+    background-size: 200% 200%;
+    color: #fff;
+    border: none;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background-position 0.4s, transform 0.2s;
 }
 
 .btn-cart:hover {
-    background: #F7CA00;
-    transform: none;
+    background-position: 100% 50%;
+    transform: translateY(-1px);
 }
 
 /* ===== Image Lightbox ===== */
