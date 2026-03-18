@@ -909,7 +909,169 @@ ul {
     font-size: 0.95rem;
 }
 
-/* ===== About ===== */
+/* ===== Customer Reviews ===== */
+.reviews-section {
+    background: #fff;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.review-card {
+    background: #faf8f5;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #f0ece6;
+}
+
+.review-stars {
+    color: #c9a96e;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.review-text {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 1.2rem;
+}
+
+.review-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-author strong {
+    color: #1a1a1a;
+    font-size: 0.95rem;
+}
+
+.review-author span {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+/* ===== Size Guide ===== */
+.sizeguide-section {
+    background: #faf8f5;
+}
+
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.guide-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #f0ece6;
+    text-align: center;
+}
+
+.guide-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.guide-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+}
+
+.guide-card ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}
+
+.guide-card ul li {
+    font-size: 0.95rem;
+    color: #555;
+    padding: 0.4rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.guide-card ul li::before {
+    content: '•';
+    color: #c9a96e;
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+
+/* ===== Instagram Section ===== */
+.instagram-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #fff;
+}
+
+.insta-subtitle {
+    color: #888;
+    font-size: 1rem;
+    margin-top: -1.5rem;
+    margin-bottom: 2rem;
+}
+
+.insta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 14px 35px;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.insta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(131, 58, 180, 0.4);
+}
+
+.insta-icon {
+    font-size: 1.3rem;
+}
+
+/* ===== WhatsApp Floating Button ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    z-index: 2000;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
 /* ===== USP Features Strip ===== */
 .usp-strip {
     background: #f9f5f0;
@@ -1171,6 +1333,21 @@ ul {
         width: 36px;
         height: 36px;
         font-size: 1.5rem;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .whatsapp-float {
+        bottom: 16px;
+        right: 16px;
+        width: 50px;
+        height: 50px;
     }
 
     /* Fix background-attachment: fixed on mobile (iOS doesn't support it) */
