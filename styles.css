@@ -1,3 +1,78 @@
+/* ===== Loading Screen ===== */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-logo {
+    width: 80px;
+    animation: loader-pulse 1.2s ease-in-out infinite;
+}
+
+.loader-text {
+    font-family: 'Cormorant Garamond', serif;
+    color: #c9a96e;
+    font-size: 1.4rem;
+    letter-spacing: 4px;
+    margin-top: 1rem;
+    opacity: 0;
+    animation: loader-fade 0.8s ease 0.3s forwards;
+}
+
+@keyframes loader-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes loader-fade {
+    to { opacity: 1; }
+}
+
+/* ===== Festival Banner ===== */
+.festival-banner {
+    background: linear-gradient(135deg, #8B1A4A, #c9a96e);
+    color: #fff;
+    text-align: center;
+    padding: 0.7rem 2.5rem 0.7rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.festival-close {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.festival-close:hover {
+    opacity: 1;
+}
+
 /* ===== Reset & Base ===== */
 * {
     margin: 0;
@@ -400,11 +475,7 @@ ul {
     object-fit: cover;
     object-position: top;
     display: block;
-    transition: transform 0.3s;
-}
-
-.product-thumb:hover img {
-    transform: scale(1.02);
+    transition: transform 0.4s ease;
 }
 
 .product-tag {
@@ -419,6 +490,12 @@ ul {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    animation: badge-glow 2s ease-in-out infinite;
+}
+
+@keyframes badge-glow {
+    0%, 100% { box-shadow: 0 0 4px rgba(204, 12, 57, 0.3); }
+    50% { box-shadow: 0 0 12px rgba(204, 12, 57, 0.6); }
 }
 
 .img-count {
@@ -964,6 +1041,198 @@ ul {
     color: #8B1A4A;
     font-weight: 600;
     font-size: 0.95rem;
+}
+
+/* ===== How to Order ===== */
+.how-to-order-section {
+    background: #fff;
+    text-align: center;
+}
+
+.steps-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.step-card {
+    background: #faf8f5;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    flex: 1;
+    min-width: 220px;
+    max-width: 300px;
+    position: relative;
+    border: 1px solid #f0ece6;
+}
+
+.step-number {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 28px;
+    background: #8B1A4A;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.step-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.step-card p {
+    font-size: 0.9rem;
+    color: #777;
+    line-height: 1.6;
+}
+
+.step-arrow {
+    font-size: 1.5rem;
+    color: #c9a96e;
+    font-weight: 700;
+}
+
+/* ===== Colour Chart Section ===== */
+.colour-chart-section {
+    background: linear-gradient(160deg, #1a1a1a 0%, #2d1f2f 50%, #8B1A4A 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.colour-chart-section .section-title::after {
+    background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+}
+
+.colour-subtitle {
+    color: rgba(255,255,255,0.6);
+    font-size: 1rem;
+    margin-top: -1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.colour-chart-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+}
+
+.colour-chart-card {
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.colour-chart-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+}
+
+.colour-chart-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.chart-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: #fff;
+    padding: 1.5rem 0.8rem 0.8rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.colour-note {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+}
+
+/* ===== FAQ Section ===== */
+.faq-section {
+    max-width: 800px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 0;
+}
+
+.faq-question h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.faq-toggle {
+    font-size: 1.5rem;
+    color: #c9a96e;
+    font-weight: 300;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.faq-answer p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.8;
+    padding-bottom: 1.2rem;
+}
+
+.faq-item.open .faq-toggle {
+    transform: rotate(45deg);
+}
+
+.faq-item.open .faq-answer {
+    max-height: 300px;
 }
 
 /* ===== Customer Reviews ===== */
@@ -1519,11 +1788,25 @@ ul {
         grid-template-columns: 1fr;
     }
 
-    .whatsapp-float {
-        bottom: 16px;
-        right: 16px;
-        width: 50px;
-        height: 50px;
+    .steps-grid {
+        flex-direction: column;
+    }
+
+    .step-arrow {
+        transform: rotate(90deg);
+    }
+
+    .colour-chart-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .colour-chart-card img {
+        height: 200px;
+    }
+
+    .festival-banner {
+        font-size: 0.75rem;
+        padding: 0.6rem 2rem 0.6rem 0.8rem;
     }
 
     /* Fix background-attachment: fixed on mobile (iOS doesn't support it) */

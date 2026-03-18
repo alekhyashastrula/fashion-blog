@@ -39,6 +39,18 @@
 </head>
 <body>
 
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <img src="images/logo.png" alt="Shastrula Studios" class="loader-logo">
+        <p class="loader-text">Shastrula Studios</p>
+    </div>
+
+    <!-- Festival Banner -->
+    <div class="festival-banner" id="festivalBanner">
+        <p>New Collection Just Dropped — Explore Our Latest Mul Cotton Sarees!</p>
+        <button class="festival-close" onclick="document.getElementById('festivalBanner').style.display='none'">&times;</button>
+    </div>
+
     <!-- Top Bar Ticker -->
     <div class="top-bar">
         <div class="ticker-wrap">
@@ -296,6 +308,58 @@
         </div>
     </div>
 
+    <!-- How to Order -->
+    <section class="section how-to-order-section">
+        <h2 class="section-title">How to Order</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <span class="step-icon">&#128269;</span>
+                <h3>Browse & Choose</h3>
+                <p>Explore our collection and pick your favourite saree. Want a custom colour? Just let us know!</p>
+            </div>
+            <div class="step-arrow">&#8594;</div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <span class="step-icon">&#128172;</span>
+                <h3>Place Your Order</h3>
+                <p>Add to cart & fill your details, or DM us directly on Instagram — whatever is easier for you.</p>
+            </div>
+            <div class="step-arrow">&#8594;</div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <span class="step-icon">&#127873;</span>
+                <h3>Delivered to You</h3>
+                <p>Pay via UPI, and your handcrafted saree will be at your doorstep in 7–12 days. Free shipping!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Colour Chart Section -->
+    <section class="colour-chart-section">
+        <h2 class="section-title" style="color:#fff;">Choose Your Colour</h2>
+        <p class="colour-subtitle">Every saree can be customised in the colour of your choice. Browse our dyeable fabric shades below!</p>
+        <div class="colour-chart-grid">
+            <div class="colour-chart-card" onclick="openColourChart(0)">
+                <img src="images/colour-chart-light-spring.jpg" alt="Light Spring Colours">
+                <div class="chart-label">Light Spring</div>
+            </div>
+            <div class="colour-chart-card" onclick="openColourChart(1)">
+                <img src="images/colour-chart-soft-spring.jpg" alt="Soft Spring Colours">
+                <div class="chart-label">Soft Spring</div>
+            </div>
+            <div class="colour-chart-card" onclick="openColourChart(2)">
+                <img src="images/colour-chart-earthy.jpg" alt="Earthy & Neutral Colours">
+                <div class="chart-label">Earthy & Neutrals</div>
+            </div>
+            <div class="colour-chart-card" onclick="openColourChart(3)">
+                <img src="images/colour-chart-true-deep.jpg" alt="True Deep Colours">
+                <div class="chart-label">True Deep</div>
+            </div>
+        </div>
+        <p class="colour-note">Tap a chart to view full size. DM us on Instagram with your preferred colour!</p>
+    </section>
+
     <!-- USP Features Strip -->
     <section class="usp-strip">
         <div class="usp-grid">
@@ -415,6 +479,67 @@
             <h2 class="section-title">About Shastrula Studios</h2>
             <p>Welcome to <strong>Shastrula Studios</strong> — your destination for beautiful mul cotton sarees. We design lightweight, breathable sarees using the finest mul cotton fabric, perfect for the Indian woman who loves comfort without compromising on style.</p>
             <p>From classic solids and hand block prints to elegant zari borders, every saree we create celebrates the beauty of Indian draping. Based in India, we bring the softness of mul cotton and the richness of Indian tradition straight to your doorstep.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h3>What is mul cotton?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Mul cotton (also called mulmul) is an ultra-lightweight, breathable cotton fabric. It's softer than regular cotton and drapes beautifully, making it perfect for sarees — especially in Indian summers. It feels like a second skin!</p>
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h3>Can I customise the colour of a saree?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! All our sarees are available in custom colours. Just DM us on Instagram or mention your preferred colour while placing your order. We'll confirm the shade with you before making it.</p>
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h3>How long does delivery take?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Orders within India are delivered in 7–12 business days. International orders take 15–25 business days. You'll receive a tracking number once your order is shipped.</p>
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h3>What payment methods do you accept?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept payments via UPI (Google Pay, PhonePe, Paytm, etc.). After placing your order, you'll see a QR code to scan and pay. It's quick and secure!</p>
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h3>Do you offer returns or refunds?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>All sales are final — we don't offer returns or refunds. However, if you receive a damaged product, contact us within 24 hours with photos and we'll sort it out for you.</p>
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <h3>Does the saree come with a blouse piece?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Every saree comes with a 0.8-meter unstitched blouse piece in a matching colour.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -734,6 +859,56 @@ Please confirm this order by replying to the customer.`
             if (e.key === 'ArrowRight') lbSlide(1);
         });
 
+        // ===== Loading Screen =====
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
+        });
+
+        // ===== FAQ Toggle =====
+        function toggleFaq(item) {
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+
+        // ===== Colour Chart Lightbox =====
+        const colourCharts = [
+            'images/colour-chart-light-spring.jpg',
+            'images/colour-chart-soft-spring.jpg',
+            'images/colour-chart-earthy.jpg',
+            'images/colour-chart-true-deep.jpg'
+        ];
+        function openColourChart(index) {
+            galleryImages = colourCharts;
+            lbIndex = index;
+            const lb = document.getElementById('lightbox');
+            lb.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            lbUpdate();
+            const thumbsEl = document.getElementById('lbThumbs');
+            thumbsEl.innerHTML = galleryImages.map((src, i) =>
+                `<img src="${src}" class="lb-thumb ${i === lbIndex ? 'active' : ''}" onclick="lbGoTo(${i}); event.stopPropagation();">`
+            ).join('');
+        }
+
+        // ===== Image Zoom on Hover =====
+        document.querySelectorAll('.product-thumb').forEach(thumb => {
+            const img = thumb.querySelector('img');
+            thumb.addEventListener('mousemove', (e) => {
+                const rect = thumb.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                img.style.transformOrigin = `${x}% ${y}%`;
+                img.style.transform = 'scale(1.5)';
+            });
+            thumb.addEventListener('mouseleave', () => {
+                img.style.transform = 'scale(1)';
+                img.style.transformOrigin = 'center center';
+            });
+        });
+
         // ===== Scroll Fade-In Animations =====
         const observerOptions = { threshold: 0.15 };
         const fadeObserver = new IntersectionObserver((entries) => {
@@ -745,7 +920,7 @@ Please confirm this order by replying to the customer.`
             });
         }, observerOptions);
 
-        document.querySelectorAll('.product-card, .review-card, .guide-card, .usp-item, .about-content, .newsletter-content').forEach(el => {
+        document.querySelectorAll('.product-card, .review-card, .guide-card, .usp-item, .about-content, .newsletter-content, .step-card, .faq-item').forEach(el => {
             el.classList.add('fade-in');
             fadeObserver.observe(el);
         });
