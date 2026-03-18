@@ -1300,6 +1300,59 @@ ul {
     color: #666;
 }
 
+/* ===== Policy Pages ===== */
+.policy-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.policy-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: #1a1a1a;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.policy-content p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+}
+
+.policy-content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.policy-content ul li {
+    font-size: 1rem;
+    color: #555;
+    padding: 0.4rem 0 0.4rem 1.2rem;
+    position: relative;
+    line-height: 1.8;
+}
+
+.policy-content ul li::before {
+    content: '•';
+    color: #c9a96e;
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+
+.policy-content a {
+    color: #8B1A4A;
+    font-weight: 600;
+}
+
+.policy-content a:hover {
+    text-decoration: underline;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
     .hero-script {
