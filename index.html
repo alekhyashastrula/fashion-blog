@@ -189,6 +189,40 @@
         </div>
     </div>
 
+    <!-- USP Features Strip -->
+    <section class="usp-strip">
+        <div class="usp-grid">
+            <div class="usp-item">
+                <span class="usp-icon">&#10003;</span>
+                <div>
+                    <h4>Free Shipping</h4>
+                    <p>Across India on all orders</p>
+                </div>
+            </div>
+            <div class="usp-item">
+                <span class="usp-icon">&#128666;</span>
+                <div>
+                    <h4>Delivery in 7–12 Days</h4>
+                    <p>Fast & reliable delivery</p>
+                </div>
+            </div>
+            <div class="usp-item">
+                <span class="usp-icon">&#9733;</span>
+                <div>
+                    <h4>Premium Quality</h4>
+                    <p>Handcrafted mul cotton fabric</p>
+                </div>
+            </div>
+            <div class="usp-item">
+                <span class="usp-icon">&#128176;</span>
+                <div>
+                    <h4>Secure Payments</h4>
+                    <p>100% safe & trusted checkout</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="section about-section">
         <div class="about-content">
@@ -198,19 +232,40 @@
         </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h2>Subscribe to Our Emails</h2>
+            <p>Be the first to know about new collections and exclusive offers.</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact" class="footer">
         <div class="footer-container">
             <div class="footer-col">
                 <h3>Shastrula Studios</h3>
-                <p>Beautiful mul cotton sarees designed in India.</p>
+                <p>Budget-friendly handcrafted mul cotton sarees — from classic prints to elegant statement pieces. Quality, comfort, and style at affordable prices.</p>
             </div>
             <div class="footer-col">
-                <h3>Quick Links</h3>
+                <h3>Discover</h3>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#shop">Shop</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="mailto:alekhyashastrula25@gmail.com">Customer Care</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -223,7 +278,8 @@
             </div>
             <div class="footer-col">
                 <h3>Contact</h3>
-                <p>hello@shastrulastudios.com</p>
+                <p>alekhyashastrula25@gmail.com</p>
+                <p>Hyderabad, India</p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -434,6 +490,17 @@ Please confirm this order by replying to the customer.`
                 closeCheckout();
                 form.reset();
             }, 500);
+        }
+
+        // Newsletter
+        function subscribeNewsletter(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            const subject = encodeURIComponent('New Subscriber — Shastrula Studios');
+            const body = encodeURIComponent('New subscriber: ' + email);
+            window.location.href = 'mailto:alekhyashastrula25@gmail.com?subject=' + subject + '&body=' + body;
+            e.target.reset();
+            alert('Thank you for subscribing! We will keep you updated.');
         }
 
         // Mobile menu toggle

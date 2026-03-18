@@ -842,6 +842,110 @@ ul {
 }
 
 /* ===== About ===== */
+/* ===== USP Features Strip ===== */
+.usp-strip {
+    background: #f9f5f0;
+    padding: 3rem 2rem;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.usp-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+}
+
+.usp-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.usp-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.usp-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.usp-item p {
+    font-size: 0.85rem;
+    color: #888;
+    margin: 0;
+}
+
+/* ===== Newsletter ===== */
+.newsletter-section {
+    background: #f9f5f0;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.newsletter-content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.newsletter-content > p {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.newsletter-form button {
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #e8a4b8, #c9a96e);
+    color: #fff;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    transition: opacity 0.3s;
+}
+
+.newsletter-form button:hover {
+    opacity: 0.9;
+}
+
+/* ===== About ===== */
 .about-section {
     text-align: center;
 }
@@ -937,6 +1041,26 @@ ul {
 
     .shop-grid {
         grid-template-columns: 1fr;
+    }
+
+    .usp-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        border-radius: 12px;
+    }
+
+    .newsletter-form input {
+        border-bottom: 1px solid #eee;
+        text-align: center;
+    }
+
+    .newsletter-form button {
+        border-radius: 0 0 12px 12px;
+        padding: 14px;
     }
 
     .lb-prev, .lb-next {
