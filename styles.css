@@ -21,16 +21,43 @@ ul {
     list-style: none;
 }
 
-/* ===== Top Bar ===== */
+/* ===== Top Bar Ticker ===== */
 .top-bar {
     background: #1a1a1a;
     color: #c9a96e;
-    text-align: center;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0;
     font-size: 0.75rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 400;
+    overflow: hidden;
+}
+
+.ticker-wrap {
+    overflow: hidden;
+    width: 100%;
+}
+
+.ticker {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: ticker-scroll 25s linear infinite;
+}
+
+.ticker-item {
+    padding: 0 0.5rem;
+}
+
+.ticker-divider {
+    padding: 0 1rem;
+    opacity: 0.4;
+    font-size: 0.5rem;
+    vertical-align: middle;
+}
+
+@keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* ===== Navbar ===== */
@@ -1351,6 +1378,72 @@ ul {
 
 .policy-content a:hover {
     text-decoration: underline;
+}
+
+/* ===== Scroll Fade-In Animations ===== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger product cards */
+.product-card.fade-in:nth-child(2) { transition-delay: 0.1s; }
+.product-card.fade-in:nth-child(3) { transition-delay: 0.2s; }
+.product-card.fade-in:nth-child(4) { transition-delay: 0.3s; }
+.product-card.fade-in:nth-child(5) { transition-delay: 0.4s; }
+
+/* Stagger review cards */
+.review-card.fade-in:nth-child(2) { transition-delay: 0.15s; }
+.review-card.fade-in:nth-child(3) { transition-delay: 0.3s; }
+
+/* Stagger guide cards */
+.guide-card.fade-in:nth-child(2) { transition-delay: 0.15s; }
+.guide-card.fade-in:nth-child(3) { transition-delay: 0.3s; }
+
+/* ===== Enhanced Product Card Hover ===== */
+.product-card {
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Back to Top Button ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 44px;
+    height: 44px;
+    background: #1a1a1a;
+    color: #c9a96e;
+    border: 1px solid #c9a96e;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.back-to-top:hover {
+    background: #c9a96e;
+    color: #1a1a1a;
+    transform: translateY(-3px);
 }
 
 /* ===== Responsive ===== */

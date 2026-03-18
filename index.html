@@ -39,9 +39,31 @@
 </head>
 <body>
 
-    <!-- Top Bar -->
+    <!-- Top Bar Ticker -->
     <div class="top-bar">
-        <p>Free Shipping Across India | International Orders — Shipping Charges Apply</p>
+        <div class="ticker-wrap">
+            <div class="ticker">
+                <span class="ticker-item">Free Shipping Across India</span>
+                <span class="ticker-divider">&#9830;</span>
+                <span class="ticker-item">Handcrafted Mul Cotton Sarees</span>
+                <span class="ticker-divider">&#9830;</span>
+                <span class="ticker-item">Customise Colours As Per Your Choice</span>
+                <span class="ticker-divider">&#9830;</span>
+                <span class="ticker-item">International Shipping Available</span>
+                <span class="ticker-divider">&#9830;</span>
+                <span class="ticker-item">DM Us on Instagram to Order</span>
+                <span class="ticker-divider">&#9830;</span>
+                <span class="ticker-item">Free Shipping Across India</span>
+                <span class="ticker-divider">&#9830;</span>
+                <span class="ticker-item">Handcrafted Mul Cotton Sarees</span>
+                <span class="ticker-divider">&#9830;</span>
+                <span class="ticker-item">Customise Colours As Per Your Choice</span>
+                <span class="ticker-divider">&#9830;</span>
+                <span class="ticker-item">International Shipping Available</span>
+                <span class="ticker-divider">&#9830;</span>
+                <span class="ticker-item">DM Us on Instagram to Order</span>
+            </div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -711,8 +733,36 @@ Please confirm this order by replying to the customer.`
             if (e.key === 'ArrowLeft') lbSlide(-1);
             if (e.key === 'ArrowRight') lbSlide(1);
         });
+
+        // ===== Scroll Fade-In Animations =====
+        const observerOptions = { threshold: 0.15 };
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card, .review-card, .guide-card, .usp-item, .about-content, .newsletter-content').forEach(el => {
+            el.classList.add('fade-in');
+            fadeObserver.observe(el);
+        });
+
+        // ===== Back to Top Button =====
+        const topBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            topBtn.classList.toggle('show', window.scrollY > 500);
+        });
+        topBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     </script>
 
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
 
 </body>
 </html>
