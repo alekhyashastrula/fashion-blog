@@ -434,7 +434,7 @@
                 </select>
                 <textarea name="address" placeholder="Delivery Address" rows="3" required></textarea>
                 <div class="order-summary" id="orderSummary"></div>
-                <button type="submit" class="btn-primary btn-submit">Send Order via Email</button>
+                <button type="submit" class="btn-primary btn-submit">Choose How to Send</button>
             </form>
         </div>
     </div>
@@ -443,11 +443,11 @@
     <div class="modal-overlay" id="paymentModal">
         <div class="modal payment-modal">
             <button class="modal-close" onclick="closePayment()">&times;</button>
-            <h2>Complete Your Payment</h2>
+            <h2>Send Your Order</h2>
             <p class="payment-amount" id="paymentAmount"></p>
-            <p class="pay-instruction">Choose how you'd like to pay — we'll send you the payment link right away.</p>
+            <p class="pay-instruction">Choose how you'd like to reach us — your order details will be included automatically.</p>
             <div class="pay-contact-list">
-                <a href="https://ig.me/m/shastrula_studios" target="_blank" rel="noopener" class="pay-contact-btn">
+                <a href="https://ig.me/m/shastrula_studios" target="_blank" rel="noopener" class="pay-contact-btn" id="payIgBtn">
                     <span class="pay-app-icon ig-icon">IG</span>
                     <span class="pay-contact-info">
                         <span class="pay-contact-name">Instagram</span>
@@ -455,19 +455,19 @@
                     </span>
                     <span class="pay-contact-arrow">&#8594;</span>
                 </a>
-                <a href="https://wa.me/917680078580" target="_blank" rel="noopener" class="pay-contact-btn">
+                <a href="#" target="_blank" rel="noopener" class="pay-contact-btn" id="payWaBtn">
                     <span class="pay-app-icon wa-icon">WA</span>
                     <span class="pay-contact-info">
                         <span class="pay-contact-name">WhatsApp</span>
-                        <span class="pay-contact-handle">Tap to chat with us</span>
+                        <span class="pay-contact-handle">Send order details via WhatsApp</span>
                     </span>
                     <span class="pay-contact-arrow">&#8594;</span>
                 </a>
-                <a href="mailto:alekhyashastrula25@gmail.com" class="pay-contact-btn">
+                <a href="#" class="pay-contact-btn" id="payEmailBtn">
                     <span class="pay-app-icon mail-icon">@</span>
                     <span class="pay-contact-info">
                         <span class="pay-contact-name">Email</span>
-                        <span class="pay-contact-handle">Send us a mail</span>
+                        <span class="pay-contact-handle">Send order details via Email</span>
                     </span>
                     <span class="pay-contact-arrow">&#8594;</span>
                 </a>
@@ -620,32 +620,6 @@
 
         function closeCheckout() { document.getElementById('checkoutModal').classList.remove('open'); }
         function closePayment() { document.getElementById('paymentModal').classList.remove('open'); }
-        let pendingOrderMailto = '';
-        let pendingOrderBody = '';
-        let screenshotDataUrl = '';
-
-        function previewScreenshot(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(ev) {
-                screenshotDataUrl = ev.target.result;
-                document.getElementById('screenshotImg').src = screenshotDataUrl;
-                document.getElementById('screenshotPreview').style.display = 'block';
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function paymentDone() {
-            if (pendingOrderMailto) {
-                window.location.href = pendingOrderMailto;
-                pendingOrderMailto = '';
-            }
-            closePayment();
-            document.getElementById('thankYouModal').classList.add('open');
-            cart = [];
-            updateCart();
-        }
         function closeThankYou() { document.getElementById('thankYouModal').classList.remove('open'); }
 
         function submitOrder(e) {
@@ -654,14 +628,23 @@
             const name = form.name.value, email = form.email.value, phone = form.phone.value, country = form.country.value, address = form.address.value;
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
             const itemsList = cart.map(item => `${item.name} x${item.qty} = \u20B9${(item.price * item.qty).toLocaleString('en-IN')}`).join('\n');
-            const shippingNote = country === 'India' ? 'Free Shipping' : 'International \u2014 Shipping charges to be confirmed';
-            const subject = encodeURIComponent('New Order \u2014 Shastrula Studios');
-            const body = encodeURIComponent(`New Order from Shastrula Studios\n\nCustomer:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${country}\nAddress: ${address}\n\nOrder:\n${itemsList}\n\nTotal: \u20B9${totalPrice.toLocaleString('en-IN')}\nShipping: ${shippingNote}`);
-            window.location.href = `mailto:alekhyashastrula25@gmail.com?subject=${subject}&body=${body}`;
-            document.getElementById('paymentAmount').textContent = '₹' + totalPrice.toLocaleString('en-IN');
+            const shippingNote = country === 'India' ? 'Free Shipping' : 'International — Shipping charges to be confirmed';
+
+            const orderText = `Hi! I'd like to place an order from Shastrula Studios.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${country}\nAddress: ${address}\n\nOrder:\n${itemsList}\n\nTotal: \u20B9${totalPrice.toLocaleString('en-IN')}\nShipping: ${shippingNote}`;
+
+            // WhatsApp link with pre-filled message
+            document.getElementById('payWaBtn').href = `https://wa.me/917680078580?text=${encodeURIComponent(orderText)}`;
+
+            // Email link with pre-filled subject + body
+            const emailSubject = encodeURIComponent('New Order \u2014 Shastrula Studios');
+            document.getElementById('payEmailBtn').href = `mailto:alekhyashastrula25@gmail.com?subject=${emailSubject}&body=${encodeURIComponent(orderText)}`;
+
+            document.getElementById('paymentAmount').textContent = '\u20B9' + totalPrice.toLocaleString('en-IN');
             closeCheckout();
             document.getElementById('paymentModal').classList.add('open');
             form.reset();
+            cart = [];
+            updateCart();
         }
 
         function sendInstaDM(name, price) {
