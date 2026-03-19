@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alekhya Shastrula — Handcrafted Mul Cotton Sarees | Shastrula Studios</title>
     <meta name="description" content="A visual diary of tradition, sarees, and timeless stories. Shop beautiful handcrafted mul cotton sarees at Shastrula Studios.">
-    <meta name="keywords" content="mul cotton sarees, handcrafted sarees, Pichwai print saree, Kalamkari saree, cotton sarees online, Indian sarees, Shastrula Studios, affordable sarees">
+    <meta name="keywords" content="mul cotton sarees, handcrafted sarees, Pichwai print saree, mulmul saree, cotton sarees online, Indian sarees, Shastrula Studios, affordable sarees">
 
     <!-- Open Graph / WhatsApp & Facebook Preview -->
     <meta property="og:type" content="website">
@@ -351,7 +351,7 @@
             </div>
             <div class="faq-item" onclick="toggleFaq(this)">
                 <div class="faq-question"><h3>What payment methods do you accept?</h3><span class="faq-toggle">+</span></div>
-                <div class="faq-answer"><p>We accept payments via UPI (Google Pay, PhonePe, Paytm, etc.). After placing your order, you'll see a QR code to scan and pay.</p></div>
+                <div class="faq-answer"><p>After placing your order, we'll share our UPI details (Google Pay, PhonePe, Paytm, etc.) via WhatsApp, Instagram, or Email — whichever you chose.</p></div>
             </div>
             <div class="faq-item" onclick="toggleFaq(this)">
                 <div class="faq-question"><h3>Do you offer returns or refunds?</h3><span class="faq-toggle">+</span></div>
@@ -482,15 +482,7 @@
             <h2>Thank You!</h2>
             <p class="modal-subtitle">Your order has been received.</p>
             <div class="thankyou-details">
-                <p>We'll confirm via email within <strong>24 hours</strong>.</p>
-                <div id="txnIdConfirm" class="txn-confirm" style="display:none">
-                    <p class="txn-label">Your Transaction ID</p>
-                    <p class="txn-value" id="txnIdDisplay"></p>
-                </div>
-                <div id="screenshotConfirm" class="screenshot-confirm" style="display:none">
-                    <p class="txn-label">Your Payment Screenshot (keep this as proof)</p>
-                    <img id="screenshotConfirmImg" src="" alt="Payment proof" class="screenshot-confirm-img" />
-                </div>
+                <p>We'll be in touch within <strong>24 hours</strong> to confirm your order and share payment details.</p>
             </div>
             <button class="btn-primary btn-submit" onclick="closeThankYou()">Continue Shopping</button>
         </div>
@@ -632,8 +624,8 @@
         }
         function sendViaWA() {
             closePayment();
-            window.location.href = pendingWaUrl;
-            setTimeout(() => { document.getElementById('thankYouModal').classList.add('open'); }, 500);
+            window.open(pendingWaUrl, '_blank');
+            document.getElementById('thankYouModal').classList.add('open');
         }
         function sendViaEmail() {
             closePayment();
@@ -662,10 +654,6 @@
             form.reset();
             cart = [];
             updateCart();
-        }
-
-        function sendInstaDM(name, price) {
-            // Instagram DM intent handled by the link href
         }
 
         // ===== Load Reviews from Google Sheet =====
