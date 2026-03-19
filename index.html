@@ -448,7 +448,7 @@
             <p class="modal-subtitle">To pay, reach out to us on any of the options below and we'll share the payment details with you.</p>
             <div class="pay-contact-list">
                 <a href="https://ig.me/m/shastrula_studios" target="_blank" rel="noopener" class="pay-contact-btn">
-                    <span class="pay-app-icon ig-icon">&#128247;</span>
+                    <span class="pay-app-icon ig-icon">IG</span>
                     <span class="pay-contact-info">
                         <span class="pay-contact-name">Instagram</span>
                         <span class="pay-contact-handle">@shastrula_studios</span>
@@ -456,7 +456,7 @@
                     <span class="pay-contact-arrow">&#8594;</span>
                 </a>
                 <a href="https://wa.me/917680078580" target="_blank" rel="noopener" class="pay-contact-btn">
-                    <span class="pay-app-icon wa-icon">&#128172;</span>
+                    <span class="pay-app-icon wa-icon">WA</span>
                     <span class="pay-contact-info">
                         <span class="pay-contact-name">WhatsApp</span>
                         <span class="pay-contact-handle">+91 76800 78580</span>
@@ -464,7 +464,7 @@
                     <span class="pay-contact-arrow">&#8594;</span>
                 </a>
                 <a href="mailto:alekhyashastrula25@gmail.com" class="pay-contact-btn">
-                    <span class="pay-app-icon mail-icon">&#9993;</span>
+                    <span class="pay-app-icon mail-icon">@</span>
                     <span class="pay-contact-info">
                         <span class="pay-contact-name">Email</span>
                         <span class="pay-contact-handle">alekhyashastrula25@gmail.com</span>
@@ -472,7 +472,6 @@
                     <span class="pay-contact-arrow">&#8594;</span>
                 </a>
             </div>
-            <button class="btn-primary btn-submit" style="margin-top:1.2rem;" onclick="paymentDone()">I've Completed Payment</button>
         </div>
     </div>
 
@@ -658,8 +657,7 @@
             const shippingNote = country === 'India' ? 'Free Shipping' : 'International \u2014 Shipping charges to be confirmed';
             const subject = encodeURIComponent('New Order \u2014 Shastrula Studios');
             const body = encodeURIComponent(`New Order from Shastrula Studios\n\nCustomer:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${country}\nAddress: ${address}\n\nOrder:\n${itemsList}\n\nTotal: \u20B9${totalPrice.toLocaleString('en-IN')}\nShipping: ${shippingNote}`);
-            pendingOrderMailto = `mailto:alekhyashastrula25@gmail.com?subject=${subject}&body=${body}`;
-            pendingOrderBody = body;
+            window.location.href = `mailto:alekhyashastrula25@gmail.com?subject=${subject}&body=${body}`;
             document.getElementById('paymentAmount').textContent = '₹' + totalPrice.toLocaleString('en-IN');
             closeCheckout();
             document.getElementById('paymentModal').classList.add('open');

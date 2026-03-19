@@ -1613,18 +1613,21 @@ img { max-width: 100%; display: block; }
 .pay-contact-btn:hover { background: #f0ebe4; }
 
 .pay-app-icon {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
-    line-height: 1;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.03em;
+    font-family: var(--font-body);
 }
-.ig-icon  { background: linear-gradient(135deg, #f9ed32 0%, #ee2a7b 50%, #285AEB 100%); }
-.wa-icon  { background: #25D366; }
+.ig-icon   { background: linear-gradient(135deg, #f9ed32 0%, #ee2a7b 50%, #285AEB 100%); }
+.wa-icon   { background: #25D366; }
 .mail-icon { background: #EA4335; }
 
 .pay-contact-info {
