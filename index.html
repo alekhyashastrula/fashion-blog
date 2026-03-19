@@ -449,7 +449,16 @@
                 <img src="images/upi-qr.jpg" alt="UPI QR Code" class="qr-img">
             </div>
             <p class="payment-amount" id="paymentAmount"></p>
-            <p class="payment-note">After payment, share the screenshot via email for confirmation.</p>
+            <div class="payment-proof-wrap">
+                <label class="proof-label">UPI Transaction ID <span class="proof-required">*</span></label>
+                <input type="text" id="upiTxnId" class="proof-input" placeholder="e.g. 123456789012" />
+                <label class="proof-label" style="margin-top:0.8rem;">Payment Screenshot <span class="proof-optional">(optional but recommended)</span></label>
+                <label class="proof-upload-btn" for="paymentScreenshot">&#128247; Upload Screenshot</label>
+                <input type="file" id="paymentScreenshot" accept="image/*" style="display:none" onchange="previewScreenshot(event)" />
+                <div id="screenshotPreview" class="screenshot-preview" style="display:none">
+                    <img id="screenshotImg" src="" alt="Payment screenshot" />
+                </div>
+            </div>
             <button class="btn-primary btn-submit" onclick="paymentDone()">I've Completed Payment</button>
         </div>
     </div>
@@ -462,10 +471,14 @@
             <p class="modal-subtitle">Your order has been received.</p>
             <div class="thankyou-details">
                 <p>We'll confirm via email within <strong>24 hours</strong>.</p>
-                <p>For faster confirmation, share payment screenshot to:</p>
-                <a href="mailto:alekhyashastrula25@gmail.com" class="thankyou-email">alekhyashastrula25@gmail.com</a>
-                <p style="margin-top: 1rem;">Or DM us on Instagram:</p>
-                <a href="https://ig.me/m/shastrula_studios" target="_blank" class="thankyou-insta">@shastrula_studios</a>
+                <div id="txnIdConfirm" class="txn-confirm" style="display:none">
+                    <p class="txn-label">Your Transaction ID</p>
+                    <p class="txn-value" id="txnIdDisplay"></p>
+                </div>
+                <div id="screenshotConfirm" class="screenshot-confirm" style="display:none">
+                    <p class="txn-label">Your Payment Screenshot (keep this as proof)</p>
+                    <img id="screenshotConfirmImg" src="" alt="Payment proof" class="screenshot-confirm-img" />
+                </div>
             </div>
             <button class="btn-primary btn-submit" onclick="closeThankYou()">Continue Shopping</button>
         </div>
@@ -595,7 +608,56 @@
 
         function closeCheckout() { document.getElementById('checkoutModal').classList.remove('open'); }
         function closePayment() { document.getElementById('paymentModal').classList.remove('open'); }
-        function paymentDone() { closePayment(); document.getElementById('thankYouModal').classList.add('open'); cart = []; updateCart(); }
+        let pendingOrderMailto = '';
+        let pendingOrderBody = '';
+        let screenshotDataUrl = '';
+
+        function previewScreenshot(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                screenshotDataUrl = ev.target.result;
+                document.getElementById('screenshotImg').src = screenshotDataUrl;
+                document.getElementById('screenshotPreview').style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function paymentDone() {
+            const txnId = document.getElementById('upiTxnId').value.trim();
+            if (!txnId) {
+                document.getElementById('upiTxnId').focus();
+                document.getElementById('upiTxnId').style.borderColor = '#c0392b';
+                document.getElementById('upiTxnId').placeholder = 'Please enter your UPI Transaction ID';
+                return;
+            }
+            // Build final mailto with transaction ID
+            const finalBody = pendingOrderBody + encodeURIComponent('\n\nPayment Proof:\nUPI Transaction ID: ' + txnId);
+            const subject = encodeURIComponent('New Order \u2014 Shastrula Studios');
+            window.location.href = 'mailto:alekhyashastrula25@gmail.com?subject=' + subject + '&body=' + finalBody;
+            pendingOrderMailto = '';
+
+            // Show proof in thank you modal
+            document.getElementById('txnIdDisplay').textContent = txnId;
+            document.getElementById('txnIdConfirm').style.display = 'block';
+            if (screenshotDataUrl) {
+                document.getElementById('screenshotConfirmImg').src = screenshotDataUrl;
+                document.getElementById('screenshotConfirm').style.display = 'block';
+            }
+
+            closePayment();
+            document.getElementById('thankYouModal').classList.add('open');
+            cart = [];
+            updateCart();
+
+            // Reset payment fields
+            document.getElementById('upiTxnId').value = '';
+            document.getElementById('upiTxnId').style.borderColor = '';
+            document.getElementById('paymentScreenshot').value = '';
+            document.getElementById('screenshotPreview').style.display = 'none';
+            screenshotDataUrl = '';
+        }
         function closeThankYou() { document.getElementById('thankYouModal').classList.remove('open'); }
 
         function submitOrder(e) {
@@ -607,13 +669,12 @@
             const shippingNote = country === 'India' ? 'Free Shipping' : 'International \u2014 Shipping charges to be confirmed';
             const subject = encodeURIComponent('New Order \u2014 Shastrula Studios');
             const body = encodeURIComponent(`New Order from Shastrula Studios\n\nCustomer:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${country}\nAddress: ${address}\n\nOrder:\n${itemsList}\n\nTotal: \u20B9${totalPrice.toLocaleString('en-IN')}\nShipping: ${shippingNote}`);
-            window.location.href = `mailto:alekhyashastrula25@gmail.com?subject=${subject}&body=${body}`;
-            setTimeout(() => {
-                document.getElementById('paymentAmount').textContent = 'Amount: \u20B9' + totalPrice.toLocaleString('en-IN');
-                closeCheckout();
-                document.getElementById('paymentModal').classList.add('open');
-                form.reset();
-            }, 500);
+            pendingOrderMailto = `mailto:alekhyashastrula25@gmail.com?subject=${subject}&body=${body}`;
+            pendingOrderBody = body;
+            document.getElementById('paymentAmount').textContent = 'Amount: \u20B9' + totalPrice.toLocaleString('en-IN');
+            closeCheckout();
+            document.getElementById('paymentModal').classList.add('open');
+            form.reset();
         }
 
         function sendInstaDM(name, price) {
