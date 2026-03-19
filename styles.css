@@ -1169,10 +1169,53 @@ ul {
     letter-spacing: 1px;
 }
 
-.colour-note {
-    color: rgba(255,255,255,0.5);
+.colour-chart-steps {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0 2rem;
+    flex-wrap: wrap;
+}
+.colour-step {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem;
+}
+.colour-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #C6975F, #E8C97A);
+    color: #1a0a1e;
+    font-weight: 700;
     font-size: 0.85rem;
+    flex-shrink: 0;
+}
+.colour-note {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
     margin-top: 1.5rem;
+}
+.btn-customise-order {
+    display: inline-block;
+    margin-top: 1.2rem;
+    padding: 12px 32px;
+    background: #8B1A4A;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.3s, transform 0.3s;
+}
+.btn-customise-order:hover {
+    background: #a1225a;
+    transform: translateY(-2px);
 }
 
 /* ===== FAQ Section ===== */
