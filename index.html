@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shastrula Studios — Handcrafted Mul Cotton Sarees | Shop Online</title>
-    <meta name="description" content="Shop beautiful handcrafted mul cotton sarees at Shastrula Studios. Pichwai, Kalamkari, Floral & more prints. Lightweight, elegant & purely Indian. Free shipping across India.">
+    <title>Alekhya Shastrula — Handcrafted Mul Cotton Sarees | Shastrula Studios</title>
+    <meta name="description" content="A visual diary of tradition, sarees, and timeless stories. Shop beautiful handcrafted mul cotton sarees at Shastrula Studios.">
     <meta name="keywords" content="mul cotton sarees, handcrafted sarees, Pichwai print saree, Kalamkari saree, cotton sarees online, Indian sarees, Shastrula Studios, affordable sarees">
 
     <!-- Open Graph / WhatsApp & Facebook Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Shastrula Studios — Handcrafted Mul Cotton Sarees">
-    <meta property="og:description" content="Lightweight, elegant & purely Indian. Shop handcrafted mul cotton sarees starting at ₹1,800. Free shipping across India.">
+    <meta property="og:title" content="Alekhya Shastrula — Handcrafted Mul Cotton Sarees">
+    <meta property="og:description" content="A visual diary of tradition, sarees, and timeless stories. Handcrafted mul cotton sarees starting at Rs.1,800.">
     <meta property="og:image" content="https://alekhyashastrula.github.io/fashion-blog/images/pichwai-ink-blue-1.png">
     <meta property="og:url" content="https://alekhyashastrula.github.io/fashion-blog/">
     <meta property="og:site_name" content="Shastrula Studios">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Shastrula Studios — Handcrafted Mul Cotton Sarees">
-    <meta name="twitter:description" content="Lightweight, elegant & purely Indian. Shop handcrafted mul cotton sarees starting at ₹1,800.">
+    <meta name="twitter:title" content="Alekhya Shastrula — Handcrafted Mul Cotton Sarees">
+    <meta name="twitter:description" content="A visual diary of tradition, sarees, and timeless stories.">
     <meta name="twitter:image" content="https://alekhyashastrula.github.io/fashion-blog/images/pichwai-ink-blue-1.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="apple-touch-icon" href="images/logo.png">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BY3W57J9DK"></script>
@@ -35,7 +34,7 @@
     </script>
 
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -45,41 +44,8 @@
         <p class="loader-text">Shastrula Studios</p>
     </div>
 
-    <!-- Festival Banner -->
-    <div class="festival-banner" id="festivalBanner">
-        <p>New Collection Just Dropped — Explore Our Latest Mul Cotton Sarees!</p>
-        <button class="festival-close" onclick="document.getElementById('festivalBanner').style.display='none'">&times;</button>
-    </div>
-
-    <!-- Top Bar Ticker -->
-    <div class="top-bar">
-        <div class="ticker-wrap">
-            <div class="ticker">
-                <span class="ticker-item">Free Shipping Across India</span>
-                <span class="ticker-divider">&#9830;</span>
-                <span class="ticker-item">Handcrafted Mul Cotton Sarees</span>
-                <span class="ticker-divider">&#9830;</span>
-                <span class="ticker-item">Customise Colours As Per Your Choice</span>
-                <span class="ticker-divider">&#9830;</span>
-                <span class="ticker-item">International Shipping Available</span>
-                <span class="ticker-divider">&#9830;</span>
-                <span class="ticker-item">DM Us on Instagram to Order</span>
-                <span class="ticker-divider">&#9830;</span>
-                <span class="ticker-item">Free Shipping Across India</span>
-                <span class="ticker-divider">&#9830;</span>
-                <span class="ticker-item">Handcrafted Mul Cotton Sarees</span>
-                <span class="ticker-divider">&#9830;</span>
-                <span class="ticker-item">Customise Colours As Per Your Choice</span>
-                <span class="ticker-divider">&#9830;</span>
-                <span class="ticker-item">International Shipping Available</span>
-                <span class="ticker-divider">&#9830;</span>
-                <span class="ticker-item">DM Us on Instagram to Order</span>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
                 <img src="images/logo.png" alt="Shastrula Studios" class="logo-icon">
@@ -91,12 +57,13 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#shop">Shop</a></li>
+                <li><a href="#stories">Stories</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="cart-btn" onclick="toggleCart()" aria-label="Shopping cart">
-                &#128722; <span class="cart-count" id="cartCount">0</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                <span class="cart-count" id="cartCount">0</span>
             </button>
             <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
         </div>
@@ -104,7 +71,9 @@
 
     <!-- Hero Section -->
     <header id="home" class="hero">
-        <div class="hero-overlay">
+        <div class="hero-bg" style="background-image: url('images/IMG_3942.png')"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
             <div class="hero-badge">Est. 2026</div>
             <h1 class="hero-title">
                 <span class="hero-script">Shastrula</span>
@@ -113,170 +82,307 @@
             <div class="hero-line"></div>
             <p class="hero-tagline">Handcrafted Mul Cotton Sarees</p>
             <p class="hero-sub">Lightweight &bull; Elegant &bull; Purely Indian</p>
-            <a href="#shop" class="btn-hero">Explore Collection</a>
+            <a href="#stories" class="btn-hero">Explore Collection</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </header>
 
-    <!-- Shop Section -->
-    <section id="shop" class="section">
-        <h2 class="section-title">Our Mul Cotton Sarees</h2>
-        <p class="shop-subtitle">Pichwai, Kalamkari, Elephant, Floral, Heart, Paisley, Warli, Block Print & Bandhani prints on pure mul cotton — customise the colour as per your choice</p>
-        <div class="shop-grid">
+    <!-- Signature Quote Section -->
+    <section class="quote-section">
+        <div class="quote-ornament">&#10045;</div>
+        <blockquote class="signature-quote">
+            "Not just sarees, but stories woven in time"
+        </blockquote>
+        <div class="quote-line"></div>
+    </section>
 
-            <div class="product-card">
-                <div class="product-thumb" onclick="openGallery(0, 0)">
+    <!-- Stories / Shop Section -->
+    <section id="stories" class="section stories-section">
+        <h2 class="section-title">Stories</h2>
+        <p class="section-subtitle">Each saree carries a story of tradition, colour, and craft</p>
+        <div class="stories-grid">
+
+            <div class="story-card" onclick="openGallery(0, 0)">
+                <div class="story-img">
                     <img src="images/pichwai-ink-blue-1.png" alt="Pichwai Print — Ink Blue">
-                    <span class="product-tag">Bestseller</span>
-                    <span class="img-count">1/3</span>
+                    <span class="story-tag">Bestseller</span>
                 </div>
-                <div class="product-info">
-                    <div class="color-options">+Available in custom colours</div>
+                <div class="story-info">
                     <h3>Pichwai Print — Ink Blue</h3>
-                    <p class="product-subtitle">Mul Cotton | Handcrafted Pichwai Print</p>
-                    <div class="price-row">
-                        <span class="product-price">&#8377;3,000</span>
+                    <p>Sacred temple art meets everyday elegance. Hand-printed Pichwai motifs on the softest mul cotton.</p>
+                    <div class="story-price">&#8377;3,000</div>
+                    <div class="story-actions">
+                        <button class="btn-add" onclick="event.stopPropagation(); addToCart(1, 'Pichwai Print — Ink Blue', 3000)">Add to Cart</button>
+                        <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-dm" onclick="event.stopPropagation(); sendInstaDM('Pichwai Print — Ink Blue', 3000)">DM to Order</a>
                     </div>
-                    <p class="delivery-info">&#10003; Free Delivery across India</p>
-                    <button class="btn-cart" onclick="addToCart(1, 'Pichwai Print — Ink Blue', 3000)">Add to Cart</button>
-                    <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-insta-order" onclick="sendInstaDM('Pichwai Print — Ink Blue', 3000)">Order on Instagram</a>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="product-thumb" onclick="openGallery(1, 0)">
+            <div class="story-card" onclick="openGallery(1, 0)">
+                <div class="story-img">
                     <img src="images/pichwai-peach-coral-1.png" alt="Floral Print — Peach & Coral">
-                    <span class="product-tag">New</span>
-                    <span class="img-count">1/2</span>
+                    <span class="story-tag">New</span>
                 </div>
-                <div class="product-info">
-                    <div class="color-options">+Available in custom colours</div>
+                <div class="story-info">
                     <h3>Floral Print — Peach & Coral</h3>
-                    <p class="product-subtitle">Mul Cotton | Handcrafted Floral Print</p>
-                    <div class="price-row">
-                        <span class="product-price">&#8377;3,000</span>
+                    <p>Delicate florals in warm peach and coral tones. A sunset draped around you.</p>
+                    <div class="story-price">&#8377;3,000</div>
+                    <div class="story-actions">
+                        <button class="btn-add" onclick="event.stopPropagation(); addToCart(2, 'Floral Print — Peach & Coral', 3000)">Add to Cart</button>
+                        <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-dm" onclick="event.stopPropagation(); sendInstaDM('Floral Print — Peach & Coral', 3000)">DM to Order</a>
                     </div>
-                    <p class="delivery-info">&#10003; Free Delivery across India</p>
-                    <button class="btn-cart" onclick="addToCart(2, 'Floral Print — Peach & Coral', 3000)">Add to Cart</button>
-                    <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-insta-order" onclick="sendInstaDM('Floral Print — Peach & Coral', 3000)">Order on Instagram</a>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="product-thumb" onclick="openGallery(2, 0)">
+            <div class="story-card" onclick="openGallery(2, 0)">
+                <div class="story-img">
                     <img src="images/tiny-flower-babypink-mint-1.png" alt="Tiny Flower Print — Baby Pink & Mint">
-                    <span class="product-tag">New</span>
-                    <span class="img-count">1/2</span>
+                    <span class="story-tag">New</span>
                 </div>
-                <div class="product-info">
-                    <div class="color-options">+Available in custom colours</div>
-                    <h3>Tiny Flower Print — Baby Pink & Mint</h3>
-                    <p class="product-subtitle">Mul Cotton | Handcrafted Tiny Flower Print</p>
-                    <div class="price-row">
-                        <span class="product-price">&#8377;3,000</span>
+                <div class="story-info">
+                    <h3>Tiny Flower — Baby Pink & Mint</h3>
+                    <p>Whisper-soft florals scattered like spring petals. Fresh, playful, and effortlessly feminine.</p>
+                    <div class="story-price">&#8377;3,000</div>
+                    <div class="story-actions">
+                        <button class="btn-add" onclick="event.stopPropagation(); addToCart(3, 'Tiny Flower Print — Baby Pink & Mint', 3000)">Add to Cart</button>
+                        <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-dm" onclick="event.stopPropagation(); sendInstaDM('Tiny Flower Print — Baby Pink & Mint', 3000)">DM to Order</a>
                     </div>
-                    <p class="delivery-info">&#10003; Free Delivery across India</p>
-                    <button class="btn-cart" onclick="addToCart(3, 'Tiny Flower Print — Baby Pink & Mint', 3000)">Add to Cart</button>
-                    <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-insta-order" onclick="sendInstaDM('Tiny Flower Print — Baby Pink & Coral', 3000)">Order on Instagram</a>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="product-thumb" onclick="openGallery(3, 0)">
+            <div class="story-card" onclick="openGallery(3, 0)">
+                <div class="story-img">
                     <img src="images/heart-yellow-1.jpg" alt="Heart Print — Yellow">
-                    <span class="product-tag">New</span>
-                    <span class="img-count">1/4</span>
+                    <span class="story-tag">New</span>
                 </div>
-                <div class="product-info">
-                    <div class="color-options">+Available in custom colours</div>
+                <div class="story-info">
                     <h3>Heart Print — Yellow</h3>
-                    <p class="product-subtitle">Mul Cotton | Handcrafted Heart Print</p>
-                    <div class="price-row">
-                        <span class="product-price">&#8377;3,000</span>
+                    <p>Bold hearts on sunshine yellow. A love letter to colour and joy, woven in mul cotton.</p>
+                    <div class="story-price">&#8377;3,000</div>
+                    <div class="story-actions">
+                        <button class="btn-add" onclick="event.stopPropagation(); addToCart(4, 'Heart Print — Yellow', 3000)">Add to Cart</button>
+                        <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-dm" onclick="event.stopPropagation(); sendInstaDM('Heart Print — Yellow', 3000)">DM to Order</a>
                     </div>
-                    <p class="delivery-info">&#10003; Free Delivery across India</p>
-                    <button class="btn-cart" onclick="addToCart(4, 'Heart Print — Yellow', 3000)">Add to Cart</button>
-                    <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-insta-order" onclick="sendInstaDM('Heart Print — Yellow', 3000)">Order on Instagram</a>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="product-thumb" onclick="openGallery(4, 0)">
+            <div class="story-card" onclick="openGallery(4, 0)">
+                <div class="story-img">
                     <img src="images/plain-babypink-2.png" alt="Plain Mul Cotton — Baby Pink">
-                    <span class="product-tag">New</span>
-                    <span class="img-count">1/3</span>
+                    <span class="story-tag">New</span>
                 </div>
-                <div class="product-info">
-                    <div class="color-options">+Available in custom colours</div>
+                <div class="story-info">
                     <h3>Plain Mul Cotton — Baby Pink</h3>
-                    <p class="product-subtitle">Mul Cotton | Lightweight Plain Weave</p>
-                    <div class="price-row">
-                        <span class="product-price">&#8377;1,800</span>
+                    <p>Pure simplicity in the softest blush. Lightweight, breathable, and endlessly versatile.</p>
+                    <div class="story-price">&#8377;1,800</div>
+                    <div class="story-actions">
+                        <button class="btn-add" onclick="event.stopPropagation(); addToCart(5, 'Plain Mul Cotton — Baby Pink', 1800)">Add to Cart</button>
+                        <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-dm" onclick="event.stopPropagation(); sendInstaDM('Plain Mul Cotton — Baby Pink', 1800)">DM to Order</a>
                     </div>
-                    <p class="delivery-info">&#10003; Free Delivery across India</p>
-                    <button class="btn-cart" onclick="addToCart(5, 'Plain Mul Cotton — Baby Pink', 1800)">Add to Cart</button>
-                    <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-insta-order" onclick="sendInstaDM('Plain Mul Cotton — Baby Pink', 1800)">Order on Instagram</a>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="product-thumb" onclick="openGallery(5, 0)">
+            <div class="story-card" onclick="openGallery(5, 0)">
+                <div class="story-img">
                     <img src="images/plain-apricot-cream-1.jpg" alt="Plain Mul Cotton — Apricot Cream">
-                    <span class="product-tag">New</span>
-                    <span class="img-count">1/2</span>
+                    <span class="story-tag">New</span>
                 </div>
-                <div class="product-info">
-                    <div class="color-options">+Soft Aqua Blouse | Custom colours available</div>
-                    <h3>Plain Mul Cotton — Apricot Cream</h3>
-                    <p class="product-subtitle">Mul Cotton | Lightweight Plain Weave</p>
-                    <div class="price-row">
-                        <span class="product-price">&#8377;1,800</span>
+                <div class="story-info">
+                    <h3>Apricot Cream — Soft Aqua Blouse</h3>
+                    <p>Warm apricot paired with a calming aqua blouse. A colour story that feels like dawn.</p>
+                    <div class="story-price">&#8377;1,800</div>
+                    <div class="story-actions">
+                        <button class="btn-add" onclick="event.stopPropagation(); addToCart(6, 'Plain Mul Cotton — Apricot Cream', 1800)">Add to Cart</button>
+                        <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-dm" onclick="event.stopPropagation(); sendInstaDM('Plain Mul Cotton — Apricot Cream', 1800)">DM to Order</a>
                     </div>
-                    <p class="delivery-info">&#10003; Free Delivery across India</p>
-                    <button class="btn-cart" onclick="addToCart(6, 'Plain Mul Cotton — Apricot Cream', 1800)">Add to Cart</button>
-                    <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-insta-order" onclick="sendInstaDM('Plain Mul Cotton — Apricot Cream', 1800)">Order on Instagram</a>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="product-thumb" onclick="openGallery(6, 0)">
+            <div class="story-card" onclick="openGallery(6, 0)">
+                <div class="story-img">
                     <img src="images/plain-camel-1.jpg" alt="Plain Mul Cotton — Camel">
-                    <span class="product-tag">New</span>
-                    <span class="img-count">1/3</span>
+                    <span class="story-tag">New</span>
                 </div>
-                <div class="product-info">
-                    <div class="color-options">+Brick Red Blouse | Custom colours available</div>
-                    <h3>Plain Mul Cotton — Camel</h3>
-                    <p class="product-subtitle">Mul Cotton | Lightweight Plain Weave</p>
-                    <div class="price-row">
-                        <span class="product-price">&#8377;1,800</span>
+                <div class="story-info">
+                    <h3>Camel — Brick Red Blouse</h3>
+                    <p>Earthy camel draped with a bold brick red blouse. Grounded, warm, and timeless.</p>
+                    <div class="story-price">&#8377;1,800</div>
+                    <div class="story-actions">
+                        <button class="btn-add" onclick="event.stopPropagation(); addToCart(7, 'Plain Mul Cotton — Camel', 1800)">Add to Cart</button>
+                        <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-dm" onclick="event.stopPropagation(); sendInstaDM('Plain Mul Cotton — Camel', 1800)">DM to Order</a>
                     </div>
-                    <p class="delivery-info">&#10003; Free Delivery across India</p>
-                    <button class="btn-cart" onclick="addToCart(7, 'Plain Mul Cotton — Camel', 1800)">Add to Cart</button>
-                    <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-insta-order" onclick="sendInstaDM('Plain Mul Cotton — Camel', 1800)">Order on Instagram</a>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="product-thumb" onclick="openGallery(7, 0)">
+            <div class="story-card" onclick="openGallery(7, 0)">
+                <div class="story-img">
                     <img src="images/plain-aubergine-1.jpg" alt="Plain Mul Cotton — Aubergine">
-                    <span class="product-tag">New</span>
-                    <span class="img-count">1/4</span>
+                    <span class="story-tag">New</span>
                 </div>
-                <div class="product-info">
-                    <div class="color-options">+Forest Green Blouse | Custom colours available</div>
-                    <h3>Plain Mul Cotton — Aubergine</h3>
-                    <p class="product-subtitle">Mul Cotton | Lightweight Plain Weave</p>
-                    <div class="price-row">
-                        <span class="product-price">&#8377;1,800</span>
+                <div class="story-info">
+                    <h3>Aubergine — Forest Green Blouse</h3>
+                    <p>Deep aubergine meets forest green. A rich, dramatic pairing for the bold at heart.</p>
+                    <div class="story-price">&#8377;1,800</div>
+                    <div class="story-actions">
+                        <button class="btn-add" onclick="event.stopPropagation(); addToCart(8, 'Plain Mul Cotton — Aubergine', 1800)">Add to Cart</button>
+                        <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-dm" onclick="event.stopPropagation(); sendInstaDM('Plain Mul Cotton — Aubergine', 1800)">DM to Order</a>
                     </div>
-                    <p class="delivery-info">&#10003; Free Delivery across India</p>
-                    <button class="btn-cart" onclick="addToCart(8, 'Plain Mul Cotton — Aubergine', 1800)">Add to Cart</button>
-                    <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-insta-order" onclick="sendInstaDM('Plain Mul Cotton — Aubergine', 1800)">Order on Instagram</a>
                 </div>
             </div>
 
         </div>
     </section>
+
+    <!-- Customise Colour Section -->
+    <section class="section colour-section">
+        <h2 class="section-title">Customise Your Colour</h2>
+        <p class="section-subtitle">Pick a shade from our charts and we'll dye it just for you</p>
+        <div class="colour-steps">
+            <div class="colour-step"><span class="step-num">1</span>Browse the charts</div>
+            <div class="colour-step"><span class="step-num">2</span>Pick your shade</div>
+            <div class="colour-step"><span class="step-num">3</span>DM us on Instagram</div>
+        </div>
+        <div class="colour-grid">
+            <div class="colour-card" onclick="openColourChart(0)">
+                <img src="images/colour-chart-light-spring.jpg" alt="Light Spring Colours">
+                <div class="colour-label">Light Spring</div>
+            </div>
+            <div class="colour-card" onclick="openColourChart(1)">
+                <img src="images/colour-chart-soft-spring.jpg" alt="Soft Spring Colours">
+                <div class="colour-label">Soft Spring</div>
+            </div>
+            <div class="colour-card" onclick="openColourChart(2)">
+                <img src="images/colour-chart-earthy.jpg" alt="Earthy & Neutral Colours">
+                <div class="colour-label">Earthy & Neutrals</div>
+            </div>
+            <div class="colour-card" onclick="openColourChart(3)">
+                <img src="images/colour-chart-true-deep.jpg" alt="True Deep Colours">
+                <div class="colour-label">True Deep</div>
+            </div>
+        </div>
+        <p class="colour-note">Only colours shown above are available for customisation</p>
+        <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-colour-dm">Tell Us Your Colour on Instagram</a>
+    </section>
+
+    <!-- How to Order -->
+    <section class="section order-section">
+        <h2 class="section-title">How to Order</h2>
+        <div class="order-steps">
+            <div class="order-step">
+                <div class="order-num">01</div>
+                <h3>Browse & Choose</h3>
+                <p>Explore our collection and pick your favourite saree or customise a colour.</p>
+            </div>
+            <div class="order-step">
+                <div class="order-num">02</div>
+                <h3>Place Your Order</h3>
+                <p>Add to cart and fill your details, or DM us directly on Instagram.</p>
+            </div>
+            <div class="order-step">
+                <div class="order-num">03</div>
+                <h3>Delivered to You</h3>
+                <p>Pay via UPI and your saree reaches you in 7-12 days. Free shipping across India.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="images/IMG_3943.png" alt="Alekhya Shastrula">
+            </div>
+            <div class="about-text">
+                <h2>Meet the Maker</h2>
+                <p class="about-greeting">Hi, I'm Alekhya Shastrula, Founder of Shastrula Studios.</p>
+                <p>I grew up watching my mother drape sarees with effortless grace — and somewhere between those folds and pleats, I fell in love with the art of wearing one. Shastrula Studios was born from that love.</p>
+                <p>Every saree here is a piece of my heart — handpicked fabrics, colours chosen with intention, and craftsmanship that honours tradition while embracing the modern woman. I believe elegance shouldn't come with a heavy price tag, and beauty lies in simplicity.</p>
+                <p>My dream is simple: to make every woman feel like the most beautiful version of herself, one saree at a time.</p>
+                <p class="about-signature">— With love,<br>Alekhya Shastrula</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section reviews-section">
+        <h2 class="section-title">What They Say</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p class="review-text">"The fabric is so soft and lightweight! Perfect for daily wear. I got the Pichwai print and the colours are exactly as shown."</p>
+                <div class="review-author"><strong>Priya M.</strong><span>Hyderabad</span></div>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"Beautiful saree at such an affordable price! The mul cotton drapes so well. I wore it to a family function and got so many compliments."</p>
+                <div class="review-author"><strong>Sneha R.</strong><span>Bangalore</span></div>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"Ordered the floral print for my mom and she absolutely loved it. The quality is amazing for this price range. Fast delivery too!"</p>
+                <div class="review-author"><strong>Divya K.</strong><span>Chennai</span></div>
+            </div>
+        </div>
+        <div class="customer-reviews" id="customerReviews">
+            <!-- Reviews from Google Sheet load here -->
+        </div>
+        <div class="review-cta">
+            <h3>Loved Your Saree?</h3>
+            <p>Share your experience and help other women discover their next favourite saree.</p>
+            <a href="https://forms.gle/Pj7np9n689k9FqkZ8" target="_blank" class="btn-write-review">Write a Review</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq">
+        <h2 class="section-title">Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question"><h3>What is mul cotton?</h3><span class="faq-toggle">+</span></div>
+                <div class="faq-answer"><p>Mul cotton (also called mulmul) is an ultra-lightweight, breathable cotton fabric. It's softer than regular cotton and drapes beautifully, making it perfect for sarees — especially in Indian summers.</p></div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question"><h3>Can I customise the colour?</h3><span class="faq-toggle">+</span></div>
+                <div class="faq-answer"><p>Yes! Choose any colour from our colour charts above. Only the shades shown are available. Pick your favourite, DM us the colour name on Instagram, and we'll dye it just for you.</p></div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question"><h3>How long does delivery take?</h3><span class="faq-toggle">+</span></div>
+                <div class="faq-answer"><p>Orders within India are delivered in 7-12 business days. International orders take 15-25 business days.</p></div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question"><h3>What payment methods do you accept?</h3><span class="faq-toggle">+</span></div>
+                <div class="faq-answer"><p>We accept payments via UPI (Google Pay, PhonePe, Paytm, etc.). After placing your order, you'll see a QR code to scan and pay.</p></div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question"><h3>Do you offer returns or refunds?</h3><span class="faq-toggle">+</span></div>
+                <div class="faq-answer"><p>All sales are final — we don't offer returns or refunds. If you receive a damaged product, contact us within 24 hours with photos.</p></div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question"><h3>Does the saree come with a blouse piece?</h3><span class="faq-toggle">+</span></div>
+                <div class="faq-answer"><p>Yes! Every saree comes with a 0.8-meter unstitched blouse piece in a matching colour.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="footer-quote">
+            "Wrapped in tradition, captured in time"
+        </div>
+        <div class="footer-links">
+            <a href="https://www.instagram.com/shastrula_studios/" target="_blank">Instagram</a>
+            <span class="footer-dot"></span>
+            <a href="https://www.pinterest.com/alekhyashastrula/" target="_blank">Pinterest</a>
+            <span class="footer-dot"></span>
+            <a href="mailto:alekhyashastrula25@gmail.com">Email</a>
+        </div>
+        <div class="footer-policies">
+            <a href="shipping-policy.html">Shipping</a>
+            <a href="refund-policy.html">Refund</a>
+            <a href="privacy-policy.html">Privacy</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Shastrula Studios. Hyderabad, India.</p>
+    </footer>
 
     <!-- Image Gallery Lightbox -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -314,7 +420,7 @@
         <div class="modal">
             <button class="modal-close" onclick="closeCheckout()">&times;</button>
             <h2>Place Your Order</h2>
-            <p class="modal-subtitle">Fill in your details and we'll get back to you to confirm your order.</p>
+            <p class="modal-subtitle">Fill in your details and we'll confirm your order.</p>
             <form id="checkoutForm" onsubmit="submitOrder(event)">
                 <input type="text" name="name" placeholder="Your Full Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
@@ -338,12 +444,12 @@
         <div class="modal payment-modal">
             <button class="modal-close" onclick="closePayment()">&times;</button>
             <h2>Complete Your Payment</h2>
-            <p class="modal-subtitle">Scan the QR code below using any UPI app to pay</p>
+            <p class="modal-subtitle">Scan the QR code below using any UPI app</p>
             <div class="qr-wrap">
                 <img src="images/upi-qr.jpg" alt="UPI QR Code" class="qr-img">
             </div>
             <p class="payment-amount" id="paymentAmount"></p>
-            <p class="payment-note">After payment, please share the screenshot via email for faster confirmation.</p>
+            <p class="payment-note">After payment, share the screenshot via email for confirmation.</p>
             <button class="btn-primary btn-submit" onclick="paymentDone()">I've Completed Payment</button>
         </div>
     </div>
@@ -352,361 +458,33 @@
     <div class="modal-overlay" id="thankYouModal">
         <div class="modal thankyou-modal">
             <div class="thankyou-icon">&#10003;</div>
-            <h2>Thank You for Your Order!</h2>
-            <p class="modal-subtitle">Your order has been received and payment is being verified.</p>
+            <h2>Thank You!</h2>
+            <p class="modal-subtitle">Your order has been received.</p>
             <div class="thankyou-details">
-                <p>We'll confirm your order via email within <strong>24 hours</strong>.</p>
-                <p>For faster confirmation, share your payment screenshot to:</p>
+                <p>We'll confirm via email within <strong>24 hours</strong>.</p>
+                <p>For faster confirmation, share payment screenshot to:</p>
                 <a href="mailto:alekhyashastrula25@gmail.com" class="thankyou-email">alekhyashastrula25@gmail.com</a>
-                <p style="margin-top: 1rem;">Or DM us on Instagram for quick response:</p>
-                <a href="https://ig.me/m/shastrula_studios" target="_blank" class="thankyou-insta">&#128247; @shastrula_studios</a>
+                <p style="margin-top: 1rem;">Or DM us on Instagram:</p>
+                <a href="https://ig.me/m/shastrula_studios" target="_blank" class="thankyou-insta">@shastrula_studios</a>
             </div>
             <button class="btn-primary btn-submit" onclick="closeThankYou()">Continue Shopping</button>
         </div>
     </div>
 
-    <!-- How to Order -->
-    <section class="section how-to-order-section">
-        <h2 class="section-title">How to Order</h2>
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-number">1</div>
-                <span class="step-icon">&#128269;</span>
-                <h3>Browse & Choose</h3>
-                <p>Explore our collection and pick your favourite saree. Want a custom colour? Just let us know!</p>
-            </div>
-            <div class="step-arrow">&#8594;</div>
-            <div class="step-card">
-                <div class="step-number">2</div>
-                <span class="step-icon">&#128172;</span>
-                <h3>Place Your Order</h3>
-                <p>Add to cart & fill your details, or DM us directly on Instagram — whatever is easier for you.</p>
-            </div>
-            <div class="step-arrow">&#8594;</div>
-            <div class="step-card">
-                <div class="step-number">3</div>
-                <span class="step-icon">&#127873;</span>
-                <h3>Delivered to You</h3>
-                <p>Pay via UPI, and your handcrafted saree will be at your doorstep in 7–12 days. Free shipping!</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Colour Chart Section -->
-    <section class="colour-chart-section">
-        <h2 class="section-title" style="color:#fff;">Customise Your Saree Colour</h2>
-        <p class="colour-subtitle">Want a saree in your favourite colour? Pick a shade from our colour charts below and tell us — we'll dye it just for you!</p>
-        <div class="colour-chart-steps">
-            <div class="colour-step"><span class="colour-step-num">1</span>Browse the charts below</div>
-            <div class="colour-step"><span class="colour-step-num">2</span>Pick your shade</div>
-            <div class="colour-step"><span class="colour-step-num">3</span>DM us the colour name on Instagram</div>
-        </div>
-        <div class="colour-chart-grid">
-            <div class="colour-chart-card" onclick="openColourChart(0)">
-                <img src="images/colour-chart-light-spring.jpg" alt="Light Spring Colours">
-                <div class="chart-label">Light Spring</div>
-            </div>
-            <div class="colour-chart-card" onclick="openColourChart(1)">
-                <img src="images/colour-chart-soft-spring.jpg" alt="Soft Spring Colours">
-                <div class="chart-label">Soft Spring</div>
-            </div>
-            <div class="colour-chart-card" onclick="openColourChart(2)">
-                <img src="images/colour-chart-earthy.jpg" alt="Earthy & Neutral Colours">
-                <div class="chart-label">Earthy & Neutrals</div>
-            </div>
-            <div class="colour-chart-card" onclick="openColourChart(3)">
-                <img src="images/colour-chart-true-deep.jpg" alt="True Deep Colours">
-                <div class="chart-label">True Deep</div>
-            </div>
-        </div>
-        <p class="colour-note">&#9888; Only colours shown in the charts above are available for customisation. Tap a chart to zoom in!</p>
-        <a href="https://ig.me/m/shastrula_studios" target="_blank" class="btn-customise-order">Tell Us Your Colour on Instagram</a>
-    </section>
-
-    <!-- USP Features Strip -->
-    <section class="usp-strip">
-        <div class="usp-grid">
-            <div class="usp-item">
-                <span class="usp-icon">&#10003;</span>
-                <div>
-                    <h4>Free Shipping</h4>
-                    <p>Across India on all orders</p>
-                </div>
-            </div>
-            <div class="usp-item">
-                <span class="usp-icon">&#128666;</span>
-                <div>
-                    <h4>Delivery in 7–12 Days</h4>
-                    <p>Fast & reliable delivery</p>
-                </div>
-            </div>
-            <div class="usp-item">
-                <span class="usp-icon">&#9733;</span>
-                <div>
-                    <h4>Premium Quality</h4>
-                    <p>Handcrafted mul cotton fabric</p>
-                </div>
-            </div>
-            <div class="usp-item">
-                <span class="usp-icon">&#128176;</span>
-                <div>
-                    <h4>Secure Payments</h4>
-                    <p>100% safe & trusted checkout</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Customer Reviews -->
-    <section class="section reviews-section">
-        <h2 class="section-title">What Our Customers Say</h2>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="review-text">"The fabric is so soft and lightweight! Perfect for daily wear. I got the Pichwai print and the colours are exactly as shown. Will definitely order again."</p>
-                <div class="review-author">
-                    <strong>Priya M.</strong>
-                    <span>Hyderabad</span>
-                </div>
-            </div>
-            <div class="review-card">
-                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="review-text">"Beautiful saree at such an affordable price! The mul cotton drapes so well. I wore it to a family function and got so many compliments. Love it!"</p>
-                <div class="review-author">
-                    <strong>Sneha R.</strong>
-                    <span>Bangalore</span>
-                </div>
-            </div>
-            <div class="review-card">
-                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="review-text">"Ordered the floral print for my mom and she absolutely loved it. The quality is amazing for this price range. Fast delivery too!"</p>
-                <div class="review-author">
-                    <strong>Divya K.</strong>
-                    <span>Chennai</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Size Guide / How to Drape -->
-    <section class="section sizeguide-section" id="guide">
-        <h2 class="section-title">Saree Details & Draping Guide</h2>
-        <div class="guide-grid">
-            <div class="guide-card">
-                <span class="guide-icon">&#128207;</span>
-                <h3>Saree Dimensions</h3>
-                <ul>
-                    <li>Length: 5.5 meters (standard)</li>
-                    <li>Width: 44 inches</li>
-                    <li>Blouse piece: 0.8 meters (unstitched)</li>
-                    <li>Fabric: Pure mul cotton</li>
-                </ul>
-            </div>
-            <div class="guide-card">
-                <span class="guide-icon">&#127872;</span>
-                <h3>Care Instructions</h3>
-                <ul>
-                    <li>Dry clean for first wash</li>
-                    <li>Gentle hand wash after that</li>
-                    <li>Do not bleach</li>
-                    <li>Iron on medium heat</li>
-                    <li>Store folded in a cool, dry place</li>
-                </ul>
-            </div>
-            <div class="guide-card">
-                <span class="guide-icon">&#9996;</span>
-                <h3>Draping Tips</h3>
-                <ul>
-                    <li>Mul cotton drapes beautifully without pins</li>
-                    <li>Best for Nivi style draping</li>
-                    <li>Lightweight — perfect for all-day wear</li>
-                    <li>Pairs well with oxidised or gold jewellery</li>
-                    <li>Great for office, festivals & casual outings</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Instagram Section -->
-    <section class="instagram-section">
-        <h2 class="section-title">Follow Us on Instagram</h2>
-        <p class="insta-subtitle">Stay updated with our latest collections and styling ideas</p>
-        <a href="https://www.instagram.com/shastrula_studios/" target="_blank" class="insta-btn">
-            <span class="insta-icon">&#128247;</span> @shastrula_studios
-        </a>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about-section">
-        <div class="about-content">
-            <h2 class="section-title">Meet the Maker</h2>
-            <div class="about-personal">
-                <p class="about-greeting">Hi, I'm <strong>Alekhya</strong></p>
-                <p>This space is a reflection of my love for sarees, culture, and timeless aesthetics. Every saree at Shastrula Studios is handpicked and crafted with care — from choosing the softest mul cotton fabric to getting the perfect drape and colour.</p>
-                <p>I believe that a good saree doesn't have to be expensive — just thoughtfully made. Whether it's your first saree or your fiftieth, I want it to feel special.</p>
-                <p class="about-signature">— Alekhya, Founder of Shastrula Studios</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section faq-section" id="faq">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <div class="faq-list">
-            <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-question">
-                    <h3>What is mul cotton?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Mul cotton (also called mulmul) is an ultra-lightweight, breathable cotton fabric. It's softer than regular cotton and drapes beautifully, making it perfect for sarees — especially in Indian summers. It feels like a second skin!</p>
-                </div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-question">
-                    <h3>Can I customise the colour of a saree?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes! You can choose any colour from our colour charts (scroll up to the "Customise Your Saree Colour" section). Please note — only the shades shown in our charts are available. Pick your favourite shade, DM us the colour name on Instagram, and we'll dye it just for you!</p>
-                </div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-question">
-                    <h3>How long does delivery take?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Orders within India are delivered in 7–12 business days. International orders take 15–25 business days. You'll receive a tracking number once your order is shipped.</p>
-                </div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-question">
-                    <h3>What payment methods do you accept?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>We accept payments via UPI (Google Pay, PhonePe, Paytm, etc.). After placing your order, you'll see a QR code to scan and pay. It's quick and secure!</p>
-                </div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-question">
-                    <h3>Do you offer returns or refunds?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>All sales are final — we don't offer returns or refunds. However, if you receive a damaged product, contact us within 24 hours with photos and we'll sort it out for you.</p>
-                </div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-question">
-                    <h3>Does the saree come with a blouse piece?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes! Every saree comes with a 0.8-meter unstitched blouse piece in a matching colour.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <div class="newsletter-content">
-            <h2>Subscribe to Our Emails</h2>
-            <p>Be the first to know about new collections and exclusive offers.</p>
-            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-                <input type="email" placeholder="Your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact" class="footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>Shastrula Studios</h3>
-                <p>Budget-friendly handcrafted mul cotton sarees — from classic prints to elegant statement pieces. Quality, comfort, and style at affordable prices.</p>
-            </div>
-            <div class="footer-col">
-                <h3>Discover</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#shop">Shop</a></li>
-                    <li><a href="#about">About Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Help</h3>
-                <ul>
-                    <li><a href="mailto:alekhyashastrula25@gmail.com">Customer Care</a></li>
-                    <li><a href="shipping-policy.html">Shipping Policy</a></li>
-                    <li><a href="refund-policy.html">Refund Policy</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Follow Us</h3>
-                <ul>
-                    <li><a href="https://www.instagram.com/shastrula_studios/" target="_blank">Instagram</a></li>
-                    <li><a href="https://www.pinterest.com/alekhyashastrula/" target="_blank">Pinterest</a></li>
-                    <li><a href="#">YouTube</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Contact</h3>
-                <p>alekhyashastrula25@gmail.com</p>
-                <p>Hyderabad, India</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Shastrula Studios. All rights reserved. | Designed with love in India</p>
-        </div>
-    </footer>
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
 
     <script>
         // ===== Image Gallery Lightbox =====
         const productGalleries = [
-            [
-                'images/pichwai-ink-blue-1.png',
-                'images/pichwai-ink-blue-2.png',
-                'images/pichwai-ink-blue-3.png'
-            ],
-            [
-                'images/pichwai-peach-coral-1.png',
-                'images/pichwai-peach-coral-2.png'
-            ],
-            [
-                'images/tiny-flower-babypink-mint-1.png',
-                'images/tiny-flower-babypink-mint-2.png'
-            ],
-            [
-                'images/heart-yellow-1.jpg',
-                'images/heart-yellow-2.jpg',
-                'images/heart-yellow-3.jpg',
-                'images/heart-yellow-4.png'
-            ],
-            [
-                'images/plain-babypink-2.png',
-                'images/plain-babypink-1.jpg',
-                'images/plain-babypink-3.jpg'
-            ],
-            [
-                'images/plain-apricot-cream-1.jpg',
-                'images/plain-apricot-cream-2.jpg'
-            ],
-            [
-                'images/plain-camel-1.jpg',
-                'images/plain-camel-2.jpg',
-                'images/plain-camel-3.jpg'
-            ],
-            [
-                'images/plain-aubergine-1.jpg',
-                'images/plain-aubergine-2.jpg',
-                'images/plain-aubergine-3.jpg',
-                'images/plain-aubergine-4.jpg'
-            ]
+            ['images/pichwai-ink-blue-1.png','images/pichwai-ink-blue-2.png','images/pichwai-ink-blue-3.png'],
+            ['images/pichwai-peach-coral-1.png','images/pichwai-peach-coral-2.png'],
+            ['images/tiny-flower-babypink-mint-1.png','images/tiny-flower-babypink-mint-2.png'],
+            ['images/heart-yellow-1.jpg','images/heart-yellow-2.jpg','images/heart-yellow-3.jpg','images/heart-yellow-4.png'],
+            ['images/plain-babypink-2.png','images/plain-babypink-1.jpg','images/plain-babypink-3.jpg'],
+            ['images/plain-apricot-cream-1.jpg','images/plain-apricot-cream-2.jpg'],
+            ['images/plain-camel-1.jpg','images/plain-camel-2.jpg','images/plain-camel-3.jpg'],
+            ['images/plain-aubergine-1.jpg','images/plain-aubergine-2.jpg','images/plain-aubergine-3.jpg','images/plain-aubergine-4.jpg']
         ];
         let galleryImages = [];
         let lbIndex = 0;
@@ -718,7 +496,6 @@
             lb.classList.add('open');
             document.body.style.overflow = 'hidden';
             lbUpdate();
-            // Build thumbs
             const thumbsEl = document.getElementById('lbThumbs');
             thumbsEl.innerHTML = galleryImages.map((src, i) =>
                 `<img src="${src}" class="lb-thumb ${i === lbIndex ? 'active' : ''}" onclick="lbGoTo(${i}); event.stopPropagation();">`
@@ -763,29 +540,16 @@
 
         function addToCart(id, name, price) {
             const existing = cart.find(item => item.id === id);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ id, name, price, qty: 1 });
-            }
+            if (existing) { existing.qty += 1; } else { cart.push({ id, name, price, qty: 1 }); }
             updateCart();
             toggleCart();
         }
 
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCart();
-        }
+        function removeFromCart(id) { cart = cart.filter(item => item.id !== id); updateCart(); }
 
         function changeQty(id, delta) {
             const item = cart.find(i => i.id === id);
-            if (item) {
-                item.qty += delta;
-                if (item.qty <= 0) {
-                    removeFromCart(id);
-                    return;
-                }
-            }
+            if (item) { item.qty += delta; if (item.qty <= 0) { removeFromCart(id); return; } }
             updateCart();
         }
 
@@ -794,32 +558,22 @@
             const itemsEl = document.getElementById('cartItems');
             const summaryEl = document.getElementById('cartSummary');
             const totalEl = document.getElementById('cartTotal');
-
             const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-
             countEl.textContent = totalItems;
-
             if (cart.length === 0) {
                 itemsEl.innerHTML = '<p class="cart-empty">Your cart is empty</p>';
                 summaryEl.style.display = 'none';
             } else {
                 itemsEl.innerHTML = cart.map(item => `
                     <div class="cart-item">
-                        <div class="cart-item-info">
-                            <h4>${item.name}</h4>
-                            <p>&#8377;${item.price.toLocaleString('en-IN')} each</p>
-                        </div>
-                        <div class="cart-item-controls">
-                            <button onclick="changeQty(${item.id}, -1)">-</button>
-                            <span>${item.qty}</span>
-                            <button onclick="changeQty(${item.id}, 1)">+</button>
-                        </div>
+                        <div class="cart-item-info"><h4>${item.name}</h4><p>&#8377;${item.price.toLocaleString('en-IN')} each</p></div>
+                        <div class="cart-item-controls"><button onclick="changeQty(${item.id}, -1)">-</button><span>${item.qty}</span><button onclick="changeQty(${item.id}, 1)">+</button></div>
                         <button class="cart-item-remove" onclick="removeFromCart(${item.id})">&times;</button>
                     </div>
                 `).join('');
                 summaryEl.style.display = 'block';
-                totalEl.textContent = '₹' + totalPrice.toLocaleString('en-IN');
+                totalEl.textContent = '\u20B9' + totalPrice.toLocaleString('en-IN');
             }
         }
 
@@ -832,105 +586,112 @@
             if (cart.length === 0) return;
             toggleCart();
             document.getElementById('checkoutModal').classList.add('open');
-
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
             const summaryHtml = cart.map(item =>
                 `<div class="order-item"><span>${item.name} x${item.qty}</span><span>&#8377;${(item.price * item.qty).toLocaleString('en-IN')}</span></div>`
             ).join('') + `<div class="order-item order-total"><span><strong>Total</strong></span><span><strong>&#8377;${totalPrice.toLocaleString('en-IN')}</strong></span></div>`;
-
             document.getElementById('orderSummary').innerHTML = summaryHtml;
         }
 
-        function closeCheckout() {
-            document.getElementById('checkoutModal').classList.remove('open');
-        }
-
-        function closePayment() {
-            document.getElementById('paymentModal').classList.remove('open');
-        }
-
-        function paymentDone() {
-            closePayment();
-            document.getElementById('thankYouModal').classList.add('open');
-            cart = [];
-            updateCart();
-        }
-
-        function closeThankYou() {
-            document.getElementById('thankYouModal').classList.remove('open');
-        }
+        function closeCheckout() { document.getElementById('checkoutModal').classList.remove('open'); }
+        function closePayment() { document.getElementById('paymentModal').classList.remove('open'); }
+        function paymentDone() { closePayment(); document.getElementById('thankYouModal').classList.add('open'); cart = []; updateCart(); }
+        function closeThankYou() { document.getElementById('thankYouModal').classList.remove('open'); }
 
         function submitOrder(e) {
             e.preventDefault();
             const form = e.target;
-            const name = form.name.value;
-            const email = form.email.value;
-            const phone = form.phone.value;
-            const country = form.country.value;
-            const address = form.address.value;
-
+            const name = form.name.value, email = form.email.value, phone = form.phone.value, country = form.country.value, address = form.address.value;
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            const itemsList = cart.map(item => `${item.name} x${item.qty} = ₹${(item.price * item.qty).toLocaleString('en-IN')}`).join('\n');
-            const shippingNote = country === 'India' ? 'Free Shipping' : 'International — Shipping charges to be confirmed';
-
-            const subject = encodeURIComponent('New Order — Shastrula Studios');
-            const body = encodeURIComponent(
-`New Order from Shastrula Studios Website
-
-Customer Details:
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Country: ${country}
-Address: ${address}
-
-Order Details:
-${itemsList}
-
-Total: ₹${totalPrice.toLocaleString('en-IN')}
-Shipping: ${shippingNote}
-
----
-Please confirm this order by replying to the customer.`
-            );
-
+            const itemsList = cart.map(item => `${item.name} x${item.qty} = \u20B9${(item.price * item.qty).toLocaleString('en-IN')}`).join('\n');
+            const shippingNote = country === 'India' ? 'Free Shipping' : 'International \u2014 Shipping charges to be confirmed';
+            const subject = encodeURIComponent('New Order \u2014 Shastrula Studios');
+            const body = encodeURIComponent(`New Order from Shastrula Studios\n\nCustomer:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${country}\nAddress: ${address}\n\nOrder:\n${itemsList}\n\nTotal: \u20B9${totalPrice.toLocaleString('en-IN')}\nShipping: ${shippingNote}`);
             window.location.href = `mailto:alekhyashastrula25@gmail.com?subject=${subject}&body=${body}`;
-
             setTimeout(() => {
-                document.getElementById('paymentAmount').textContent = 'Amount: ₹' + totalPrice.toLocaleString('en-IN');
+                document.getElementById('paymentAmount').textContent = 'Amount: \u20B9' + totalPrice.toLocaleString('en-IN');
                 closeCheckout();
                 document.getElementById('paymentModal').classList.add('open');
                 form.reset();
             }, 500);
         }
 
-        // Newsletter
-        function subscribeNewsletter(e) {
-            e.preventDefault();
-            const email = e.target.querySelector('input[type="email"]').value;
-            const subject = encodeURIComponent('New Subscriber — Shastrula Studios');
-            const body = encodeURIComponent('New subscriber: ' + email);
-            window.location.href = 'mailto:alekhyashastrula25@gmail.com?subject=' + subject + '&body=' + body;
-            e.target.reset();
-            alert('Thank you for subscribing! We will keep you updated.');
+        function sendInstaDM(name, price) {
+            // Instagram DM intent handled by the link href
         }
 
-        // Mobile menu toggle
+        // ===== Load Reviews from Google Sheet =====
+        function loadReviews() {
+            const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR1Zd9ZHKFdhllHToHgwqiugdZUaSXRGkZM-LYIf3GQSjhsqDddrrwgsmhJApXtxEsldCq6ws6fkEW9/pub?output=csv';
+            fetch(csvUrl)
+                .then(res => res.text())
+                .then(csv => {
+                    const rows = parseCSV(csv);
+                    if (rows.length <= 1) return; // only headers, no reviews
+                    const container = document.getElementById('customerReviews');
+                    const reviewsHtml = rows.slice(1).reverse().map(row => {
+                        const name = row[1] || 'Anonymous';
+                        const product = row[2] || '';
+                        const review = row[3] || '';
+                        const rating = row[4] || '5';
+                        if (!review.trim()) return '';
+                        const stars = '&#9733;'.repeat(parseInt(rating) || 5);
+                        const productTag = product ? `<span class="cr-product">${product}</span>` : '';
+                        return `
+                            <div class="cr-card">
+                                <div class="cr-stars">${stars}</div>
+                                <p class="cr-text">"${review}"</p>
+                                <div class="cr-footer">
+                                    <strong>${name}</strong>
+                                    ${productTag}
+                                </div>
+                            </div>
+                        `;
+                    }).filter(h => h).join('');
+                    if (reviewsHtml) {
+                        container.innerHTML = '<h3 class="cr-heading">Customer Reviews</h3><div class="cr-grid">' + reviewsHtml + '</div>';
+                    }
+                })
+                .catch(() => {});
+        }
+
+        function parseCSV(csv) {
+            const rows = [];
+            let current = [];
+            let field = '';
+            let inQuotes = false;
+            for (let i = 0; i < csv.length; i++) {
+                const ch = csv[i];
+                if (inQuotes) {
+                    if (ch === '"' && csv[i+1] === '"') { field += '"'; i++; }
+                    else if (ch === '"') { inQuotes = false; }
+                    else { field += ch; }
+                } else {
+                    if (ch === '"') { inQuotes = true; }
+                    else if (ch === ',') { current.push(field); field = ''; }
+                    else if (ch === '\n' || (ch === '\r' && csv[i+1] === '\n')) {
+                        current.push(field); field = ''; rows.push(current); current = [];
+                        if (ch === '\r') i++;
+                    } else { field += ch; }
+                }
+            }
+            if (field || current.length) { current.push(field); rows.push(current); }
+            return rows;
+        }
+
+        loadReviews();
+
+        // Mobile menu
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    navLinks.classList.remove('active');
-                }
+                if (target) { target.scrollIntoView({ behavior: 'smooth' }); navLinks.classList.remove('active'); }
             });
         });
 
@@ -941,85 +702,52 @@ Please confirm this order by replying to the customer.`
             if (e.key === 'ArrowRight') lbSlide(1);
         });
 
-        // ===== Loading Screen =====
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 1500);
-        });
+        // Loading Screen
+        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1500); });
 
-        // ===== FAQ Toggle =====
+        // FAQ Toggle
         function toggleFaq(item) {
             const isOpen = item.classList.contains('open');
             document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
             if (!isOpen) item.classList.add('open');
         }
 
-        // ===== Colour Chart Lightbox =====
-        const colourCharts = [
-            'images/colour-chart-light-spring.jpg',
-            'images/colour-chart-soft-spring.jpg',
-            'images/colour-chart-earthy.jpg',
-            'images/colour-chart-true-deep.jpg'
-        ];
+        // Colour Chart Lightbox
+        const colourCharts = ['images/colour-chart-light-spring.jpg','images/colour-chart-soft-spring.jpg','images/colour-chart-earthy.jpg','images/colour-chart-true-deep.jpg'];
         function openColourChart(index) {
             galleryImages = colourCharts;
             lbIndex = index;
-            const lb = document.getElementById('lightbox');
-            lb.classList.add('open');
+            document.getElementById('lightbox').classList.add('open');
             document.body.style.overflow = 'hidden';
             lbUpdate();
-            const thumbsEl = document.getElementById('lbThumbs');
-            thumbsEl.innerHTML = galleryImages.map((src, i) =>
+            document.getElementById('lbThumbs').innerHTML = galleryImages.map((src, i) =>
                 `<img src="${src}" class="lb-thumb ${i === lbIndex ? 'active' : ''}" onclick="lbGoTo(${i}); event.stopPropagation();">`
             ).join('');
         }
 
-        // ===== Image Zoom on Hover =====
-        document.querySelectorAll('.product-thumb').forEach(thumb => {
-            const img = thumb.querySelector('img');
-            thumb.addEventListener('mousemove', (e) => {
-                const rect = thumb.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 100;
-                const y = ((e.clientY - rect.top) / rect.height) * 100;
-                img.style.transformOrigin = `${x}% ${y}%`;
-                img.style.transform = 'scale(1.5)';
-            });
-            thumb.addEventListener('mouseleave', () => {
-                img.style.transform = 'scale(1)';
-                img.style.transformOrigin = 'center center';
-            });
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 80);
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 500);
         });
 
-        // ===== Scroll Fade-In Animations =====
-        const observerOptions = { threshold: 0.15 };
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll fade-in
         const fadeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    fadeObserver.unobserve(entry.target);
-                }
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObserver.unobserve(entry.target); }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.product-card, .review-card, .guide-card, .usp-item, .about-content, .newsletter-content, .step-card, .faq-item').forEach(el => {
+        document.querySelectorAll('.story-card, .review-card, .order-step, .about-grid, .colour-card, .faq-item, .quote-section, .image-break-text').forEach(el => {
             el.classList.add('fade-in');
             fadeObserver.observe(el);
         });
-
-        // ===== Back to Top Button =====
-        const topBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            topBtn.classList.toggle('show', window.scrollY > 500);
-        });
-        topBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
     </script>
-
-
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
 
 </body>
 </html>
