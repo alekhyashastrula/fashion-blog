@@ -1428,31 +1428,84 @@ img { max-width: 100%; display: block; }
     padding-top: 0.8rem;
 }
 
-.qr-wrap {
-    text-align: center;
-    margin: 1.5rem 0;
-}
-
-.qr-img {
-    max-width: 200px;
-    margin: 0 auto;
-    border-radius: 8px;
-}
-
-.payment-amount {
-    text-align: center;
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 1rem;
-}
 
 .payment-note {
     text-align: center;
     font-size: 0.85rem;
     color: var(--text-light);
     margin-bottom: 1.5rem;
+}
+
+.payment-amount {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+}
+
+.upi-apps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+
+.upi-app-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    padding: 0.6rem 0.3rem;
+    border-radius: 10px;
+    border: 1px solid #e8e3dc;
+    transition: transform 0.15s, box-shadow 0.15s;
+    background: #fff;
+}
+.upi-app-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.upi-app-icon svg {
+    width: 44px;
+    height: 44px;
+    display: block;
+}
+
+.upi-app-name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+}
+
+.upi-id-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.payment-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 1rem 0 0.8rem;
+}
+.payment-divider::before,
+.payment-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e0d8d0;
+}
+.payment-divider span {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    white-space: nowrap;
 }
 
 .payment-proof-wrap {
