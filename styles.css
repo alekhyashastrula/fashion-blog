@@ -1538,6 +1538,17 @@ img { max-width: 100%; display: block; }
     margin: 0.8rem 0;
     text-align: center;
 }
+.payment-alt-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 0.8rem;
+}
+.payment-alt-link {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
 .screenshot-confirm-img {
     width: 100%;
     max-height: 200px;
