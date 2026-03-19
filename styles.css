@@ -1616,6 +1616,10 @@ img { max-width: 100%; display: block; }
     text-decoration: none;
     background: #fafaf8;
     transition: background 0.15s;
+    width: 100%;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
 }
 .pay-contact-btn:hover { background: #f0ebe4; }
 

@@ -447,30 +447,30 @@
             <p class="payment-amount" id="paymentAmount"></p>
             <p class="pay-instruction">Choose how you'd like to reach us — your order details will be included automatically.</p>
             <div class="pay-contact-list">
-                <a href="https://ig.me/m/shastrula_studios" target="_blank" rel="noopener" class="pay-contact-btn" id="payIgBtn">
+                <button class="pay-contact-btn" onclick="sendViaIG()">
                     <span class="pay-app-icon ig-icon">IG</span>
                     <span class="pay-contact-info">
                         <span class="pay-contact-name">Instagram</span>
                         <span class="pay-contact-handle">DM @shastrula_studios</span>
                     </span>
                     <span class="pay-contact-arrow">&#8594;</span>
-                </a>
-                <a href="#" target="_blank" rel="noopener" class="pay-contact-btn" id="payWaBtn">
+                </button>
+                <button class="pay-contact-btn" onclick="sendViaWA()">
                     <span class="pay-app-icon wa-icon">WA</span>
                     <span class="pay-contact-info">
                         <span class="pay-contact-name">WhatsApp</span>
                         <span class="pay-contact-handle">Send order details via WhatsApp</span>
                     </span>
                     <span class="pay-contact-arrow">&#8594;</span>
-                </a>
-                <a href="#" class="pay-contact-btn" id="payEmailBtn">
+                </button>
+                <button class="pay-contact-btn" onclick="sendViaEmail()">
                     <span class="pay-app-icon mail-icon">@</span>
                     <span class="pay-contact-info">
                         <span class="pay-contact-name">Email</span>
                         <span class="pay-contact-handle">Send order details via Email</span>
                     </span>
                     <span class="pay-contact-arrow">&#8594;</span>
-                </a>
+                </button>
             </div>
         </div>
     </div>
@@ -622,6 +622,25 @@
         function closePayment() { document.getElementById('paymentModal').classList.remove('open'); }
         function closeThankYou() { document.getElementById('thankYouModal').classList.remove('open'); }
 
+        let pendingWaUrl = '';
+        let pendingEmailUrl = '';
+
+        function sendViaIG() {
+            closePayment();
+            window.open('https://ig.me/m/shastrula_studios', '_blank');
+            document.getElementById('thankYouModal').classList.add('open');
+        }
+        function sendViaWA() {
+            closePayment();
+            window.location.href = pendingWaUrl;
+            setTimeout(() => { document.getElementById('thankYouModal').classList.add('open'); }, 500);
+        }
+        function sendViaEmail() {
+            closePayment();
+            window.location.href = pendingEmailUrl;
+            setTimeout(() => { document.getElementById('thankYouModal').classList.add('open'); }, 500);
+        }
+
         function submitOrder(e) {
             e.preventDefault();
             const form = e.target;
@@ -632,12 +651,10 @@
 
             const orderText = `Hi! I'd like to place an order from Shastrula Studios.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${country}\nAddress: ${address}\n\nOrder:\n${itemsList}\n\nTotal: \u20B9${totalPrice.toLocaleString('en-IN')}\nShipping: ${shippingNote}`;
 
-            // WhatsApp link with pre-filled message
-            document.getElementById('payWaBtn').href = `https://wa.me/917680078580?text=${encodeURIComponent(orderText)}`;
-
-            // Email link with pre-filled subject + body
+            // Store URLs for the send buttons
+            pendingWaUrl = `https://wa.me/917680078580?text=${encodeURIComponent(orderText)}`;
             const emailSubject = encodeURIComponent('New Order \u2014 Shastrula Studios');
-            document.getElementById('payEmailBtn').href = `mailto:alekhyashastrula25@gmail.com?subject=${emailSubject}&body=${encodeURIComponent(orderText)}`;
+            pendingEmailUrl = `mailto:alekhyashastrula25@gmail.com?subject=${emailSubject}&body=${encodeURIComponent(orderText)}`;
 
             document.getElementById('paymentAmount').textContent = '\u20B9' + totalPrice.toLocaleString('en-IN');
             closeCheckout();
