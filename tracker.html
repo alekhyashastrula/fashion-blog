@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Tracker — Shastrula Studios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #FAF8F4;
+            --bg-warm: #F5F0E8;
+            --text: #3D2B1F;
+            --text-light: #7A6A5E;
+            --gold: #B8976A;
+            --gold-dark: #8B6F47;
+            --accent: #8B1A4A;
+            --white: #FFFFFF;
+            --green: #2E7D32;
+            --red: #C62828;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-weight: 300;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Summary Cards */
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid #E8E0D5;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+        }
+
+        .card-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .card-value {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .card-value.spent { color: var(--red); }
+        .card-value.earned { color: var(--gold-dark); }
+        .card-value.profit { color: var(--green); }
+        .card-value.pending { color: var(--accent); }
+
+        /* Buttons */
+        .btn {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover { background: #6D1239; }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold-dark);
+        }
+
+        .btn-outline:hover { background: var(--bg-warm); }
+
+        .btn-sm {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 6px;
+        }
+
+        .btn-delete {
+            background: transparent;
+            color: var(--red);
+            border: 1px solid var(--red);
+        }
+
+        .btn-delete:hover { background: #FFEBEE; }
+
+        .top-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .top-actions .search-box {
+            margin-left: auto;
+        }
+
+        .search-box input {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            padding: 0.55rem 1rem;
+            border: 1px solid #E8E0D5;
+            border-radius: 8px;
+            background: var(--white);
+            color: var(--text);
+            width: 220px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* Table */
+        .table-wrap {
+            overflow-x: auto;
+            background: var(--white);
+            border: 1px solid #E8E0D5;
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        thead {
+            background: var(--bg-warm);
+        }
+
+        th {
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.8px;
+            color: var(--text-light);
+            padding: 0.9rem 0.8rem;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 0.75rem 0.8rem;
+            border-top: 1px solid #F0EBE3;
+            white-space: nowrap;
+        }
+
+        tr:hover td { background: #FDFCFA; }
+
+        .amount { font-weight: 400; }
+        .profit-pos { color: var(--green); font-weight: 500; }
+        .profit-neg { color: var(--red); font-weight: 500; }
+
+        .status-badge {
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-paid { background: #E8F5E9; color: var(--green); }
+        .status-partial { background: #FFF8E1; color: #F57F17; }
+        .status-pending { background: #FFEBEE; color: var(--red); }
+
+        .actions-cell {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(61, 43, 31, 0.4);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal h2 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-light);
+        }
+
+        .form-group input, .form-group select {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #E8E0D5;
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .computed-preview {
+            background: var(--bg-warm);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .computed-preview .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-light);
+        }
+
+        .computed-preview .value {
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .summary { grid-template-columns: 1fr 1fr; }
+            .top-actions { flex-direction: column; align-items: stretch; }
+            .search-box { margin-left: 0; }
+            .search-box input { width: 100%; }
+            .computed-preview { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Business Tracker</h1>
+        <p class="subtitle">Shastrula Studios — Track costs, payments & profit</p>
+
+        <!-- Summary Cards -->
+        <div class="summary">
+            <div class="card">
+                <div class="card-label">Total Spent</div>
+                <div class="card-value spent" id="totalSpent">₹0</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Total Earned</div>
+                <div class="card-value earned" id="totalEarned">₹0</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Total Profit</div>
+                <div class="card-value profit" id="totalProfit">₹0</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Pending Amount</div>
+                <div class="card-value pending" id="totalPending">₹0</div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="top-actions">
+            <button class="btn btn-primary" onclick="openModal()">+ Add Entry</button>
+            <button class="btn btn-outline" onclick="exportCSV()">Export CSV</button>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by name..." oninput="renderTable()">
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Saree Name</th>
+                        <th>Customer</th>
+                        <th>Fabric</th>
+                        <th>Dyeing</th>
+                        <th>Print</th>
+                        <th>Other</th>
+                        <th>Total Cost</th>
+                        <th>Selling Price</th>
+                        <th>Advance</th>
+                        <th>Advance Date</th>
+                        <th>Remaining</th>
+                        <th>Status</th>
+                        <th>Delivery Date</th>
+                        <th>Delivery Status</th>
+                        <th>Profit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+            <div class="empty-state" id="emptyState">No entries yet — click "+ Add Entry" to start tracking</div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <h2 id="modalTitle">Add Entry</h2>
+            <input type="hidden" id="editId">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="entryDate">
+                </div>
+                <div class="form-group">
+                    <label>Saree Name</label>
+                    <input type="text" id="sareeName" placeholder="e.g. Black Soft Net">
+                </div>
+                <div class="form-group full">
+                    <label>Customer Name</label>
+                    <input type="text" id="customerName" placeholder="e.g. Priya">
+                </div>
+                <div class="form-group">
+                    <label>Fabric Cost (₹)</label>
+                    <input type="number" id="fabricCost" placeholder="0" oninput="updatePreview()">
+                </div>
+                <div class="form-group">
+                    <label>Dyeing Cost (₹)</label>
+                    <input type="number" id="dyeingCost" placeholder="0" oninput="updatePreview()">
+                </div>
+                <div class="form-group">
+                    <label>Print Cost (₹)</label>
+                    <input type="number" id="printCost" placeholder="0" oninput="updatePreview()">
+                </div>
+                <div class="form-group">
+                    <label>Other Costs (₹)</label>
+                    <input type="number" id="otherCost" placeholder="0" oninput="updatePreview()">
+                </div>
+                <div class="form-group">
+                    <label>Selling Price (₹)</label>
+                    <input type="number" id="sellingPrice" placeholder="0" oninput="updatePreview()">
+                </div>
+                <div class="form-group">
+                    <label>Advance Paid (₹)</label>
+                    <input type="number" id="advancePaid" placeholder="0" oninput="updatePreview()">
+                </div>
+                <div class="form-group">
+                    <label>Advance Paid Date</label>
+                    <input type="date" id="advanceDate">
+                </div>
+                <div class="form-group">
+                    <label>Payment Status</label>
+                    <select id="paymentStatus">
+                        <option value="pending">Pending</option>
+                        <option value="partial">Partial</option>
+                        <option value="paid">Paid</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Delivery Date</label>
+                    <input type="date" id="deliveryDate">
+                </div>
+                <div class="form-group">
+                    <label>Delivery Status</label>
+                    <select id="deliveryStatus">
+                        <option value="yet_to_deliver">Yet to Deliver</option>
+                        <option value="delivered">Delivered</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Live Preview -->
+            <div class="computed-preview">
+                <div>
+                    <div class="label">Total Cost</div>
+                    <div class="value" id="prevTotalCost">₹0</div>
+                </div>
+                <div>
+                    <div class="label">Remaining</div>
+                    <div class="value" id="prevRemaining">₹0</div>
+                </div>
+                <div>
+                    <div class="label">Profit</div>
+                    <div class="value" id="prevProfit">₹0</div>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveEntry()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data
+        let entries = JSON.parse(localStorage.getItem('ss_tracker') || '[]');
+
+        function save() {
+            localStorage.setItem('ss_tracker', JSON.stringify(entries));
+        }
+
+        function num(id) {
+            return parseFloat(document.getElementById(id).value) || 0;
+        }
+
+        function fmt(n) {
+            return '₹' + n.toLocaleString('en-IN');
+        }
+
+        // Modal
+        function openModal(id) {
+            const modal = document.getElementById('modal');
+            document.getElementById('modalTitle').textContent = id ? 'Edit Entry' : 'Add Entry';
+            document.getElementById('editId').value = id || '';
+
+            if (id) {
+                const e = entries.find(x => x.id === id);
+                document.getElementById('entryDate').value = e.date;
+                document.getElementById('sareeName').value = e.sareeName;
+                document.getElementById('customerName').value = e.customerName;
+                document.getElementById('fabricCost').value = e.fabricCost || '';
+                document.getElementById('dyeingCost').value = e.dyeingCost || '';
+                document.getElementById('printCost').value = e.printCost || '';
+                document.getElementById('otherCost').value = e.otherCost || '';
+                document.getElementById('sellingPrice').value = e.sellingPrice || '';
+                document.getElementById('advancePaid').value = e.advancePaid || '';
+                document.getElementById('paymentStatus').value = e.paymentStatus;
+                document.getElementById('advanceDate').value = e.advanceDate || '';
+                document.getElementById('deliveryDate').value = e.deliveryDate || '';
+                document.getElementById('deliveryStatus').value = e.deliveryStatus || 'yet_to_deliver';
+            } else {
+                document.getElementById('entryDate').value = new Date().toISOString().split('T')[0];
+                document.getElementById('sareeName').value = '';
+                document.getElementById('customerName').value = '';
+                document.getElementById('fabricCost').value = '';
+                document.getElementById('dyeingCost').value = '';
+                document.getElementById('printCost').value = '';
+                document.getElementById('otherCost').value = '';
+                document.getElementById('sellingPrice').value = '';
+                document.getElementById('advancePaid').value = '';
+                document.getElementById('advanceDate').value = '';
+                document.getElementById('paymentStatus').value = 'pending';
+                document.getElementById('deliveryDate').value = '';
+                document.getElementById('deliveryStatus').value = 'yet_to_deliver';
+            }
+
+            updatePreview();
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        function updatePreview() {
+            const totalCost = num('fabricCost') + num('dyeingCost') + num('printCost') + num('otherCost');
+            const remaining = num('sellingPrice') - num('advancePaid');
+            const profit = num('sellingPrice') - totalCost;
+
+            document.getElementById('prevTotalCost').textContent = fmt(totalCost);
+            document.getElementById('prevRemaining').textContent = fmt(remaining);
+            document.getElementById('prevProfit').textContent = fmt(profit);
+            document.getElementById('prevProfit').style.color = profit >= 0 ? '#2E7D32' : '#C62828';
+        }
+
+        function saveEntry() {
+            const sareeName = document.getElementById('sareeName').value.trim();
+            if (!sareeName) { alert('Please enter a saree name'); return; }
+
+            const entry = {
+                id: document.getElementById('editId').value || Date.now().toString(),
+                date: document.getElementById('entryDate').value,
+                sareeName: sareeName,
+                customerName: document.getElementById('customerName').value.trim(),
+                fabricCost: num('fabricCost'),
+                dyeingCost: num('dyeingCost'),
+                printCost: num('printCost'),
+                otherCost: num('otherCost'),
+                sellingPrice: num('sellingPrice'),
+                advancePaid: num('advancePaid'),
+                paymentStatus: document.getElementById('paymentStatus').value,
+                advanceDate: document.getElementById('advanceDate').value,
+                deliveryDate: document.getElementById('deliveryDate').value,
+                deliveryStatus: document.getElementById('deliveryStatus').value
+            };
+
+            const editId = document.getElementById('editId').value;
+            if (editId) {
+                const idx = entries.findIndex(x => x.id === editId);
+                entries[idx] = entry;
+            } else {
+                entries.push(entry);
+            }
+
+            save();
+            renderTable();
+            closeModal();
+        }
+
+        function deleteEntry(id) {
+            if (!confirm('Delete this entry?')) return;
+            entries = entries.filter(x => x.id !== id);
+            save();
+            renderTable();
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            const search = document.getElementById('searchInput').value.toLowerCase();
+
+            const filtered = entries.filter(e =>
+                e.sareeName.toLowerCase().includes(search) ||
+                e.customerName.toLowerCase().includes(search)
+            );
+
+            // Sort by date (newest first)
+            filtered.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                document.getElementById('emptyState').style.display = 'block';
+            } else {
+                document.getElementById('emptyState').style.display = 'none';
+                tbody.innerHTML = filtered.map(e => {
+                    const totalCost = e.fabricCost + e.dyeingCost + e.printCost + e.otherCost;
+                    const remaining = e.sellingPrice - e.advancePaid;
+                    const profit = e.sellingPrice - totalCost;
+                    const profitClass = profit >= 0 ? 'profit-pos' : 'profit-neg';
+                    const statusClass = 'status-' + e.paymentStatus;
+
+                    const dateStr = e.date ? new Date(e.date + 'T00:00:00').toLocaleDateString('en-IN', {
+                        day: 'numeric', month: 'short', year: '2-digit'
+                    }) : '—';
+
+                    return `<tr>
+                        <td>${dateStr}</td>
+                        <td><strong>${e.sareeName}</strong></td>
+                        <td>${e.customerName || '—'}</td>
+                        <td class="amount">${fmt(e.fabricCost)}</td>
+                        <td class="amount">${fmt(e.dyeingCost)}</td>
+                        <td class="amount">${fmt(e.printCost)}</td>
+                        <td class="amount">${fmt(e.otherCost)}</td>
+                        <td class="amount"><strong>${fmt(totalCost)}</strong></td>
+                        <td class="amount">${fmt(e.sellingPrice)}</td>
+                        <td class="amount">${fmt(e.advancePaid)}</td>
+                        <td>${e.advanceDate ? new Date(e.advanceDate + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: '2-digit' }) : '—'}</td>
+                        <td class="amount">${fmt(remaining)}</td>
+                        <td><span class="status-badge ${statusClass}">${e.paymentStatus}</span></td>
+                        <td>${e.deliveryDate ? new Date(e.deliveryDate + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: '2-digit' }) : '—'}</td>
+                        <td><span class="status-badge ${e.deliveryStatus === 'delivered' ? 'status-paid' : 'status-pending'}">${e.deliveryStatus === 'delivered' ? 'Delivered' : 'Yet to Deliver'}</span></td>
+                        <td class="${profitClass}">${fmt(profit)}</td>
+                        <td>
+                            <div class="actions-cell">
+                                <button class="btn btn-sm btn-outline" onclick="openModal('${e.id}')">Edit</button>
+                                <button class="btn btn-sm btn-delete" onclick="deleteEntry('${e.id}')">Del</button>
+                            </div>
+                        </td>
+                    </tr>`;
+                }).join('');
+            }
+
+            // Update summary cards
+            let totalSpent = 0, totalEarned = 0, totalPending = 0;
+            entries.forEach(e => {
+                totalSpent += e.fabricCost + e.dyeingCost + e.printCost + e.otherCost;
+                totalEarned += e.sellingPrice;
+                if (e.paymentStatus !== 'paid') {
+                    totalPending += e.sellingPrice - e.advancePaid;
+                }
+            });
+
+            document.getElementById('totalSpent').textContent = fmt(totalSpent);
+            document.getElementById('totalEarned').textContent = fmt(totalEarned);
+            document.getElementById('totalProfit').textContent = fmt(totalEarned - totalSpent);
+            document.getElementById('totalPending').textContent = fmt(totalPending);
+
+            // Color profit card
+            const profitEl = document.getElementById('totalProfit');
+            profitEl.className = 'card-value ' + ((totalEarned - totalSpent) >= 0 ? 'profit' : 'spent');
+        }
+
+        // Export CSV
+        function exportCSV() {
+            if (entries.length === 0) { alert('No data to export'); return; }
+
+            const headers = ['Date', 'Saree Name', 'Customer', 'Fabric Cost', 'Dyeing Cost', 'Print Cost', 'Other Cost', 'Total Cost', 'Selling Price', 'Advance Paid', 'Advance Date', 'Remaining', 'Status', 'Delivery Date', 'Delivery Status', 'Profit'];
+            const rows = entries.map(e => {
+                const totalCost = e.fabricCost + e.dyeingCost + e.printCost + e.otherCost;
+                return [
+                    e.date, e.sareeName, e.customerName,
+                    e.fabricCost, e.dyeingCost, e.printCost, e.otherCost, totalCost,
+                    e.sellingPrice, e.advancePaid, e.advanceDate || '', e.sellingPrice - e.advancePaid,
+                    e.paymentStatus, e.deliveryDate || '', e.deliveryStatus === 'delivered' ? 'Delivered' : 'Yet to Deliver', e.sellingPrice - totalCost
+                ];
+            });
+
+            let csv = headers.join(',') + '\n';
+            rows.forEach(r => { csv += r.map(v => `"${v}"`).join(',') + '\n'; });
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'shastrula-studios-tracker.csv';
+            a.click();
+        }
+
+        // Init
+        renderTable();
+    </script>
+</body>
+</html>
