@@ -316,7 +316,7 @@
             <div class="order-step">
                 <div class="order-num">03</div>
                 <h3>Delivered to You</h3>
-                <p>Pay via UPI and your saree reaches you in 7-12 days. Free shipping across India.</p>
+                <p>Pay via UPI and your saree reaches you in 7-12 days. Shipping charges apply.</p>
             </div>
         </div>
     </section>
@@ -459,7 +459,7 @@
                 <input type="tel" name="phone" placeholder="Phone Number" required>
                 <select name="country" required>
                     <option value="" disabled selected>Select Country</option>
-                    <option value="India">India (Free Shipping)</option>
+                    <option value="India">India (Shipping charges apply)</option>
                     <option value="US">United States (Shipping charges apply)</option>
                     <option value="UK">United Kingdom (Shipping charges apply)</option>
                     <option value="Other">Other Country (Shipping charges apply)</option>
@@ -672,7 +672,7 @@
             const name = form.name.value, email = form.email.value, phone = form.phone.value, country = form.country.value, address = form.address.value;
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
             const itemsList = cart.map(item => `${item.name} x${item.qty} = \u20B9${(item.price * item.qty).toLocaleString('en-IN')}`).join('\n');
-            const shippingNote = country === 'India' ? 'Free Shipping' : 'International — Shipping charges to be confirmed';
+            const shippingNote = 'Shipping charges to be confirmed';
 
             const orderText = `Hi! I'd like to place an order from Shastrula Studios.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${country}\nAddress: ${address}\n\nOrder:\n${itemsList}\n\nTotal: \u20B9${totalPrice.toLocaleString('en-IN')}\nShipping: ${shippingNote}`;
 
