@@ -85,6 +85,13 @@
         .card-value.profit { color: var(--green); }
         .card-value.pending { color: var(--accent); }
 
+        .card-sub {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--gold-dark);
+            margin-top: 0.1rem;
+        }
+
         /* Buttons */
         .btn {
             font-family: var(--font-body);
@@ -336,24 +343,25 @@
 <body>
     <div class="container">
         <h1>Business Tracker</h1>
-        <p class="subtitle">Shastrula Studios — Track costs, payments & profit</p>
+        <p class="subtitle">Shastrula Studios — Track costs, payments & profit <span id="syncStatus" style="font-size:0.75rem; padding:0.2rem 0.5rem; border-radius:10px; margin-left:0.5rem;"></span></p>
 
         <!-- Summary Cards -->
         <div class="summary">
             <div class="card">
-                <div class="card-label">Total Spent</div>
+                <div class="card-label">Total Investment</div>
                 <div class="card-value spent" id="totalSpent">₹0</div>
             </div>
             <div class="card">
-                <div class="card-label">Total Earned</div>
-                <div class="card-value earned" id="totalEarned">₹0</div>
+                <div class="card-label">Sarees Sold</div>
+                <div class="card-value earned" id="totalSareeCount">0</div>
+                <div class="card-sub" id="totalEarned">₹0</div>
             </div>
             <div class="card">
                 <div class="card-label">Total Profit</div>
                 <div class="card-value profit" id="totalProfit">₹0</div>
             </div>
             <div class="card">
-                <div class="card-label">Pending Amount</div>
+                <div class="card-label">Amount Due</div>
                 <div class="card-value pending" id="totalPending">₹0</div>
             </div>
         </div>
@@ -489,11 +497,49 @@
     </div>
 
     <script>
+        // Google Sheets API
+        const SHEET_API = 'https://script.google.com/macros/s/AKfycbx2jkilp3b9wjntN50EZFuXh1G6iiISd6vz5ieWQMxwy-fXVwzDLqkuI2Pro_zmY5FEpA/exec';
+
         // Data
         let entries = JSON.parse(localStorage.getItem('ss_tracker') || '[]');
 
+        function setSyncStatus(status) {
+            const el = document.getElementById('syncStatus');
+            if (status === 'syncing') {
+                el.textContent = 'Syncing...';
+                el.style.background = '#FFF8E1';
+                el.style.color = '#F57F17';
+            } else if (status === 'synced') {
+                el.textContent = 'Synced';
+                el.style.background = '#E8F5E9';
+                el.style.color = '#2E7D32';
+            } else if (status === 'offline') {
+                el.textContent = 'Offline';
+                el.style.background = '#FFEBEE';
+                el.style.color = '#C62828';
+            }
+        }
+
         function save() {
             localStorage.setItem('ss_tracker', JSON.stringify(entries));
+        }
+
+        function syncSave(entry) {
+            setSyncStatus('syncing');
+            fetch(SHEET_API, {
+                method: 'POST',
+                body: JSON.stringify({ action: 'save', entry: entry })
+            }).then(() => setSyncStatus('synced'))
+              .catch(() => setSyncStatus('offline'));
+        }
+
+        function syncDelete(id) {
+            setSyncStatus('syncing');
+            fetch(SHEET_API, {
+                method: 'POST',
+                body: JSON.stringify({ action: 'delete', id: id })
+            }).then(() => setSyncStatus('synced'))
+              .catch(() => setSyncStatus('offline'));
         }
 
         function num(id) {
@@ -595,6 +641,7 @@
             }
 
             save();
+            syncSave(entry);
             renderTable();
             closeModal();
         }
@@ -603,6 +650,7 @@
             if (!confirm('Delete this entry?')) return;
             entries = entries.filter(x => x.id !== id);
             save();
+            syncDelete(id);
             renderTable();
         }
 
@@ -672,6 +720,7 @@
             });
 
             document.getElementById('totalSpent').textContent = fmt(totalSpent);
+            document.getElementById('totalSareeCount').textContent = entries.length;
             document.getElementById('totalEarned').textContent = fmt(totalEarned);
             document.getElementById('totalProfit').textContent = fmt(totalEarned - totalSpent);
             document.getElementById('totalPending').textContent = fmt(totalPending);
@@ -706,8 +755,32 @@
             a.click();
         }
 
-        // Init
-        renderTable();
+        // Init — load from Google Sheets, fallback to localStorage
+        async function init() {
+            renderTable(); // show local data first
+            try {
+                setSyncStatus('syncing');
+                const res = await fetch(SHEET_API);
+                const data = await res.json();
+                // Convert sheet numbers to proper types
+                entries = data.map(e => ({
+                    ...e,
+                    id: String(e.id),
+                    fabricCost: Number(e.fabricCost) || 0,
+                    dyeingCost: Number(e.dyeingCost) || 0,
+                    printCost: Number(e.printCost) || 0,
+                    otherCost: Number(e.otherCost) || 0,
+                    sellingPrice: Number(e.sellingPrice) || 0,
+                    advancePaid: Number(e.advancePaid) || 0
+                }));
+                localStorage.setItem('ss_tracker', JSON.stringify(entries));
+                renderTable();
+                setSyncStatus('synced');
+            } catch (e) {
+                setSyncStatus('offline');
+            }
+        }
+        init();
     </script>
 </body>
 </html>
