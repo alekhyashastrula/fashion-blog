@@ -755,15 +755,15 @@
             a.click();
         }
 
-        // Init — load from Google Sheets, fallback to localStorage
+        // Init — merge Google Sheets + localStorage, never lose data
         async function init() {
             renderTable(); // show local data first
             try {
                 setSyncStatus('syncing');
                 const res = await fetch(SHEET_API);
-                const data = await res.json();
-                // Convert sheet numbers to proper types
-                entries = data.map(e => ({
+                const sheetData = await res.json();
+                // Convert sheet data to proper types
+                const sheetEntries = sheetData.map(e => ({
                     ...e,
                     id: String(e.id),
                     fabricCost: Number(e.fabricCost) || 0,
@@ -773,6 +773,28 @@
                     sellingPrice: Number(e.sellingPrice) || 0,
                     advancePaid: Number(e.advancePaid) || 0
                 }));
+
+                // Merge: keep all local entries + add any sheet-only entries
+                const localIds = new Set(entries.map(e => String(e.id)));
+                const sheetIds = new Set(sheetEntries.map(e => String(e.id)));
+
+                // Add sheet entries that aren't in local
+                sheetEntries.forEach(se => {
+                    if (!localIds.has(se.id)) {
+                        entries.push(se);
+                    }
+                });
+
+                // Push local entries that aren't in sheet to the sheet
+                entries.forEach(le => {
+                    if (!sheetIds.has(String(le.id))) {
+                        fetch(SHEET_API, {
+                            method: 'POST',
+                            body: JSON.stringify({ action: 'save', entry: le })
+                        }).catch(() => {});
+                    }
+                });
+
                 localStorage.setItem('ss_tracker', JSON.stringify(entries));
                 renderTable();
                 setSyncStatus('synced');
