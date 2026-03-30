@@ -755,45 +755,53 @@
             a.click();
         }
 
-        // Init — merge Google Sheets + localStorage, never lose data
+        // Fix date from Google Sheets (could be "2026-03-28" or "Sat Mar 28 2026..." etc)
+        function fixDate(d) {
+            if (!d) return '';
+            var str = String(d);
+            // Already in YYYY-MM-DD format
+            if (/^\d{4}-\d{2}-\d{2}$/.test(str)) return str;
+            // Try parsing it
+            var parsed = new Date(str);
+            if (!isNaN(parsed.getTime())) {
+                return parsed.toISOString().split('T')[0];
+            }
+            return '';
+        }
+
+        // Init — Google Sheets is the source of truth
         async function init() {
             renderTable(); // show local data first
             try {
                 setSyncStatus('syncing');
                 const res = await fetch(SHEET_API);
                 const sheetData = await res.json();
-                // Convert sheet data to proper types
-                const sheetEntries = sheetData.map(e => ({
-                    ...e,
-                    id: String(e.id),
-                    fabricCost: Number(e.fabricCost) || 0,
-                    dyeingCost: Number(e.dyeingCost) || 0,
-                    printCost: Number(e.printCost) || 0,
-                    otherCost: Number(e.otherCost) || 0,
-                    sellingPrice: Number(e.sellingPrice) || 0,
-                    advancePaid: Number(e.advancePaid) || 0
-                }));
 
-                // Merge: keep all local entries + add any sheet-only entries
-                const localIds = new Set(entries.map(e => String(e.id)));
-                const sheetIds = new Set(sheetEntries.map(e => String(e.id)));
-
-                // Add sheet entries that aren't in local
-                sheetEntries.forEach(se => {
-                    if (!localIds.has(se.id)) {
-                        entries.push(se);
-                    }
-                });
-
-                // Push local entries that aren't in sheet to the sheet
-                entries.forEach(le => {
-                    if (!sheetIds.has(String(le.id))) {
-                        fetch(SHEET_API, {
+                if (sheetData.length > 0) {
+                    // Sheet has data — use it as source of truth
+                    entries = sheetData.map(e => ({
+                        ...e,
+                        id: String(e.id),
+                        date: fixDate(e.date),
+                        advanceDate: fixDate(e.advanceDate),
+                        deliveryDate: fixDate(e.deliveryDate),
+                        fabricCost: Number(e.fabricCost) || 0,
+                        dyeingCost: Number(e.dyeingCost) || 0,
+                        printCost: Number(e.printCost) || 0,
+                        otherCost: Number(e.otherCost) || 0,
+                        sellingPrice: Number(e.sellingPrice) || 0,
+                        advancePaid: Number(e.advancePaid) || 0
+                    }));
+                }
+                // If sheet is empty but local has data, push local to sheet
+                else if (entries.length > 0) {
+                    for (var le of entries) {
+                        await fetch(SHEET_API, {
                             method: 'POST',
                             body: JSON.stringify({ action: 'save', entry: le })
                         }).catch(() => {});
                     }
-                });
+                }
 
                 localStorage.setItem('ss_tracker', JSON.stringify(entries));
                 renderTable();
